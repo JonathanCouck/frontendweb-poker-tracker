@@ -1,23 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
+import User from './components/User.jsx'
+import USER_DATA from './data/user_mock'
 
 function App() {
+  const user = USER_DATA[1];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <User id={user.id} firstName={user.firstName} lastName={user.lastName}/> 
     </div>
   );
 }
