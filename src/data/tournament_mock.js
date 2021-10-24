@@ -1,4 +1,4 @@
-let TOURNAMENTS = [
+let TOURNAMENTS_DATA = [
     {
         tournamentID: '32a991c6-d7a7-4cf2-8350-1bb5e454428b',
         playerID: 1,
@@ -18,11 +18,11 @@ let TOURNAMENTS = [
     {
         tournamentID: '98ec6ee6-bc8f-473b-b634-30b1985f04dd',
         playerID: 2,
+        buyin: 20,
         entrants: 68,
         place: 6,
-        buyin: 20,
         cashed: 70,
     }
 ]
 
-export default TOURNAMENTS;
+export default TOURNAMENTS_DATA;

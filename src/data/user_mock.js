@@ -1,4 +1,4 @@
-let USERS = [
+let USERS_DATA = [
     {
         id: 'e27056a0-6c82-4b5a-8c66-aa3dca6f2a2b',
         firstName: 'Jonathan',
@@ -12,4 +12,4 @@ let USERS = [
     }
 ]
 
-export default USERS;
+export default USERS_DATA;

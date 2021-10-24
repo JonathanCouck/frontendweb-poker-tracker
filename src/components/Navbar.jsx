@@ -8,7 +8,7 @@ const menuStyle = {
   backgroundColor:"lightblue",
   color: "#152c45",
   padding: "0px",
-  margin: "0px",
+  marginBottom: "20px",
   display: "flex",
   justifyContent: "space-between",
   font: "Arial"
@@ -20,7 +20,7 @@ export default function Menu(props) {
   const [user] = useState(USER_DATA[id]);
   return (
     <div style={menuStyle}>
-      <div style={menuStyle}>
+      <div>
         <NavItem title="Add Result"/>
         <NavItem title="Tournaments"/>
         <NavItem title="Cashgames"/>

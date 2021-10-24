@@ -1,4 +1,4 @@
-let CASHGAMES = [
+let CASHGAMES_DATA = [
     {
         cashgameID: '8614e153-10ae-49be-a697-5fbd7823779e',
         playerID: 1,
@@ -24,4 +24,4 @@ let CASHGAMES = [
     }
 ]
 
-export default CASHGAMES;
+export default CASHGAMES_DATA;
