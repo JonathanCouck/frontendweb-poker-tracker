@@ -1,12 +1,14 @@
+import { useState } from 'react';
 import './App.css';
-import User from './components/User.jsx'
-import USER_DATA from './data/user_mock'
+import MainComponent from './components/MainComponent';
+import Navbar from './components/Navbar';
 
 function App() {
-  const user = USER_DATA[1];
+  const [view, setView] = useState('User')
   return (
     <div className="App">
-      <User id={user.id} firstName={user.firstName} lastName={user.lastName}/> 
+      <Navbar id='0'/>
+      <MainComponent view={view}/>
     </div>
   );
 }
