@@ -4,7 +4,7 @@ const TOURNAMENT_DATA = [
     player_id: "17707541-c6c4-407a-955d-b55d8db41a19",
     place_id: "77e7e385-610a-4d7f-a203-92166de7d946",
     entrants: 68,
-    place: 6,
+    finished: 6,
     buyin: 20,
     cashed: 70,
     date: "2021-02-15T23:00:00.000Z"
@@ -14,7 +14,7 @@ const TOURNAMENT_DATA = [
     player_id: "38fb2aac-544f-47a5-8658-6273936a9a2b",
     place_id: "a521ea17-81a0-462c-946d-177292d57617",
     entrants: 57,
-    place: 2,
+    finished: 2,
     buyin: 20,
     cashed: 257,
     date: "2021-08-16T22:00:00.000Z"
@@ -24,7 +24,7 @@ const TOURNAMENT_DATA = [
     player_id: "38fb2aac-544f-47a5-8658-6273936a9a2b",
     place_id: "77e7e385-610a-4d7f-a203-92166de7d946",
     entrants: 67,
-    place: 12,
+    finished: 12,
     buyin: 20,
     cashed: 0,
     date: "2021-09-04T22:00:00.000Z"
