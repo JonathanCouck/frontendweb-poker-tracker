@@ -1,4 +1,4 @@
-const PLACES_DATA = [
+const PLACE_DATA = [
   {
     id: "a521ea17-81a0-462c-946d-177292d57617",
     name: "Grand Casino de Namur",
@@ -19,4 +19,4 @@ const PLACES_DATA = [
   }
 ];
 
-export default PLACES_DATA;
+export default PLACE_DATA;
