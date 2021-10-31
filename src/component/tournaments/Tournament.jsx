@@ -1,5 +1,5 @@
-export default function Tournament(props) {
-  const { entrants, finished, buyin, cashed, date } = props;
+export default function Tournament({ entrants, finished, buyin, cashed, date }) {
+  
 
   return (
     <div className="grid grid-cols-6 grid-row-6 border-2 border-blue-500 rounded-md bg-blue-200 m-1 text-left p-5 w-80">

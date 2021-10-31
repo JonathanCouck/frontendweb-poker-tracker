@@ -6,7 +6,7 @@ export default function MenuItem(props) {
   }
 
   return (
-    <div className="pl-auto pr-auto pt-4 pb-4 bg-gray-800 select-none cursor-default border-2 rounded-md hover:bg-gray-600 cursor-pointer" 
+    <div className="text-left pl-auto pr-auto p-4 bg-gray-800 select-none cursor-default border-2 rounded-md hover:bg-gray-600 cursor-pointer" 
         style={{color:"#61dafb",borderColor:"#212121"}} onClick={handleClick}>
       {name}
     </div>
