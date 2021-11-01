@@ -1,30 +1,28 @@
 import './App.css';
+import { useState } from 'react';
 import MenuBar from './component/menubar/MenuBar';
 import Footer from './component/Footer';
 import MainContent from './component/MainContent';
-
 import USER_DATA from './mock_data/user_mock';
+import TOURNAMENT_DATA from './mock_data/tournament_mock';
+import CASHGAME_DATA from './mock_data/cashgame_mock';
+import PLACE_DATA from './mock_data/place_mock';
 
 function App() {
-  const user = USER_DATA[1];
+  const [userIndex, setUserIndex] = useState(1);
+  const [users] = useState(USER_DATA);
+  const [tournaments, setTournaments] = useState(TOURNAMENT_DATA.filter(tour => tour.player_id === users[userIndex].id));
+  const [cashgames, setCashgames] = useState(CASHGAME_DATA.filter(cash => cash.player_id === users[userIndex].id));
+  const [places, setPlaces] = useState(PLACE_DATA);
+
   return (
-    <div className="App">
-      <div className="h-screen flex flex-nowrap">
-        <div>
-          <MenuBar user={user}/>
-          <Footer className="justify-end" />
-        </div>
-      </div>
+    <div>
+      <MenuBar user={users[userIndex]} userIndex={userIndex} />
+      <MainContent user={users[userIndex]} tournaments={tournaments} cashgames={cashgames} />
+      <Footer />
     </div>
-  
   );
 }
-//<MainContent user={user} />
 export default App;
-
 /*
-<div className="row-start-2 row-span-11 col-start-1 col-span-6 flex flex-col">
-<Tournaments tournaments={TOURNAMENT_DATA}/>
-<Cashgames cashgames={CASHGAME_DATA}/>
-</div>
-*/
+      */

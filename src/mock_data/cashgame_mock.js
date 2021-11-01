@@ -30,4 +30,5 @@ const CASHGAME_DATA = [
     date: "2021-05-26T22:00:00.000Z"
   }
 ];
+
 export default CASHGAME_DATA;

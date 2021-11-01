@@ -18,5 +18,4 @@ const PLACE_DATA = [
     house_number: 440
   }
 ];
-
 export default PLACE_DATA;
