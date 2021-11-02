@@ -1,8 +1,10 @@
-export default function MenuItem(props) {
-  const {name} = props
+import { useState } from "react"
+
+export default function MenuItem({name, changeScreen}) {
+  const [title] = useState(name)
 
   const handleClick = () => {
-    console.log(`clicked ${name}`)
+    changeScreen(title);
   }
 
   return (

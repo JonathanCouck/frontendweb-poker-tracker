@@ -10,6 +10,7 @@ export default function Cashgame({ id, small_blind, big_blind, in_for, out_for, 
   const saveGame = () => {
     saveCashgame(id, document.getElementById('sb').value, document.getElementById('bb').value, document.getElementById('inf').value, 
       document.getElementById('outf').value, document.getElementById('date').value);
+    setEditing(false)
   }
 
   const editor = () => {

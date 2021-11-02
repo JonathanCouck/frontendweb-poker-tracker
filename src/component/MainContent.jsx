@@ -7,9 +7,6 @@ export default function MainContent({user, tournaments=[], cashgames=[], saveCas
       <div>
        <Tournaments tournaments={tournaments} user={user} saveTournament={saveTournament} />
       </div>
-      <div>
-        <Cashgames cashgames={cashgames} user={user} saveCashgame={saveCashgame} />
-      </div>
     </div>
   )
 }
