@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { IoMenu } from "react-icons/io5"
 
-export default function Dropdown() {
+export default function Dropdown({signOut}) {
   const [isOpen, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -17,7 +17,7 @@ export default function Dropdown() {
       {isOpen && 
       <ul className="absolute z-10 bg-white rounded-lg text-left pt-1 pb-1 text-sm" onMouseLeave={handleLeave} style={{right: 0, left: 'auto'}}>
         <li className="block text-black p-1 hover:bg-gray-800 hover:text-white" >Account settings</li>
-        <li className="block text-black p-1 hover:bg-gray-800 hover:text-white">Sign out</li>
+        <li className="block text-black p-1 hover:bg-gray-800 hover:text-white" onClick={signOut} >Sign out</li>
       </ul>
       }
     </div>

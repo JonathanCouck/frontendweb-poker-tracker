@@ -25,12 +25,17 @@ function App() {
   }
   const logIn = (u) => {
     if(u){
-      console.log(u)
       setUser(u);
       setLoginScreen(false);
       setCashgames(CASHGAME_DATA.filter(cash => cash.player_id === u.id))
       setTournaments(TOURNAMENT_DATA.filter(tour => tour.player_id === u.id))
     }
+  }
+  const signOut = () => {
+    setTournaments(null);
+    setCashgames(null);
+    setUser(null);
+    setLoginScreen(true);
   }
 
   const logScreen = () => {
@@ -39,7 +44,7 @@ function App() {
   const mainScreen = () => {
     return (
       <div>
-        <MenuBar user={user}/>
+        <MenuBar user={user} signOut={signOut} />
         <MainContent user={user} tournaments={tournaments} cashgames={cashgames} saveCashgame={saveCashgame} saveTournament={saveTournament} />
         <Footer />
       </div>
