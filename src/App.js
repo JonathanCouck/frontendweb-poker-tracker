@@ -15,10 +15,17 @@ function App() {
   const [cashgames, setCashgames] = useState(CASHGAME_DATA.filter(cash => cash.player_id === users[userIndex].id));
   const [places, setPlaces] = useState(PLACE_DATA);
 
+  const saveCashgame = (id, small_blind, big_blind, in_for, out_for, date) => {
+    console.log(id,small_blind,big_blind,in_for,out_for,date)
+  }
+  const saveTournament = (id, entrants, finished, buyin, cashed, date) => {
+    console.log(id, entrants, finished, buyin, cashed, date)
+  }
+
   return (
     <div>
       <MenuBar user={users[userIndex]} userIndex={userIndex} />
-      <MainContent user={users[userIndex]} tournaments={tournaments} cashgames={cashgames} />
+      <MainContent user={users[userIndex]} tournaments={tournaments} cashgames={cashgames} saveCashgame={saveCashgame} saveTournament={saveTournament} />
       <Footer />
     </div>
   );

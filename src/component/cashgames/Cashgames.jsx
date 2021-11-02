@@ -1,7 +1,7 @@
 import Cashgame from "./Cashgame";
 import { useState } from "react";
 
-export default function Cashgames({user, cashgames}) {
+export default function Cashgames({user, cashgames, saveCashgame}) {
   const [profitLoss, setProfitLoss] = useState(cashgames.reduce((prev, curr) => prev+(curr.out_for-curr.in_for),0));
   
   return(
@@ -9,7 +9,7 @@ export default function Cashgames({user, cashgames}) {
       Cashgames of {user.first_name+" "+user.last_name}: (Profit/loss of ${profitLoss})
       <div className="flex text-black flex-wrap">
         {cashgames.map(cash =>
-          <Cashgame {...cash} key={cash.id}/>
+          <Cashgame {...cash} key={cash.id} saveCashgame={saveCashgame} />
         )}
       </div>
     </>
