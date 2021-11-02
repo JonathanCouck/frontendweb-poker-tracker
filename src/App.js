@@ -4,6 +4,7 @@ import MenuBar from './component/menubar/MenuBar';
 import Footer from './component/Footer';
 import Tournaments from './component/tournaments/Tournaments';
 import Cashgames from './component/cashgames/Cashgames';
+import Places from './component/places/Places';
 import Login from './component/Login';
 import USER_DATA from './mock_data/user_mock';
 import TOURNAMENT_DATA from './mock_data/tournament_mock';
@@ -24,8 +25,8 @@ function App() {
     const newCashgames = cashgames.map(cash => id===cash.id ? {id, small_blind, big_blind, in_for, out_for, date} : cash);
     setCashgames(newCashgames)
   }
-  const saveTournament = (id, entrants, finished, buyin, cashed, date) => {
-    const newTournaments = tournaments.map(tour => id===tour.id ? {id, entrants, finished, buyin, cashed, date, player_id:user.id}: tour);
+  const saveTournament = (id, entrants, finished, buyin, cashed, date, place_id) => {
+    const newTournaments = tournaments.map(tour => id===tour.id ? {id, entrants, finished, buyin, cashed, date, player_id:user.id, place_id:place_id}: tour);
     setTournaments(newTournaments)
   }
 
@@ -52,15 +53,23 @@ function App() {
   
 
   const logScreen = () => {
-    return( <Login users={users} logIn={logIn} />)
+    return( 
+      <div>
+        <Login users={users} logIn={logIn} />
+        <Footer />
+      </div>
+    )
   }
   const mainScreen = () => {
     return (
       <div>
         <MenuBar user={user} signOut={signOut} changeScreen={changeScreen} settings={settingsScreen}/>
-        {currScreen==='Tournaments' && <Tournaments tournaments={tournaments} user={user} saveTournament={saveTournament} />}
-        {currScreen==='Cashgames' && <Cashgames cashgames={cashgames} user={user} saveCashgame={saveCashgame} />}
-        {currScreen==='Settings' && <UserSettings user={user}/>}
+        <div>
+          {currScreen==='Tournaments' && <Tournaments tournaments={tournaments} user={user} saveTournament={saveTournament} places={places} />}
+          {currScreen==='Cashgames' && <Cashgames cashgames={cashgames} user={user} saveCashgame={saveCashgame} places={places} />}
+          {currScreen==='Places' && <Places places={places}/>}
+          {currScreen==='Settings' && <UserSettings user={user} places={places}/>}
+        </div>
         <Footer />
       </div>
     )
