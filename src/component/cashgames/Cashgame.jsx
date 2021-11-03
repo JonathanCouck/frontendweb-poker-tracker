@@ -11,21 +11,21 @@ export default function Cashgame({ id, small_blind, big_blind, in_for, out_for, 
   const getPlaceId = (name) => places.find(place => place.name===name).id;
   
   const checkValues = () => {
-    let stillOK = true;
-    if(document.getElementById('sb').value === '') {
-      stillOK = false;
-    } else if (document.getElementById('bb').value === '') {
-      stillOK = false;
-    } else if (document.getElementById('inf').value === '') {
-      stillOK = false;
-    } else if (document.getElementById('outf').value === '') {
-      stillOK = false;
-    } else if (document.getElementById('date').value === '') {
-      stillOK = false;
-    } else if (document.getElementById('place').value === '') {
-      stillOK = false;
+    let ok = true;
+    if(document.getElementById('sb').value ) {
+      ok = false;
+    } else if ( document.getElementById('bb').value ) {
+      ok = false;
+    } else if ( document.getElementById('inf').value ) {
+      ok = false;
+    } else if ( document.getElementById('outf').value ) {
+      ok = false;
+    } else if ( document.getElementById('date').value ) {
+      ok = false;
+    } else if ( document.getElementById('place').value ) {
+      ok = false;
     }
-    return stillOK
+    return ok;
   }
 
   const editor = () => {

@@ -11,21 +11,21 @@ export default function Tournament({ id, entrants, finished, buyin, cashed, date
   const getPlaceId = (name) => places.find(place => place.name===name).id;
 
   const checkValues = () => {
-    let stillOK = true;
-    if(document.getElementById('finished').value === '') {
-      stillOK = false;
-    } else if (document.getElementById('entrants').value === '') {
-      stillOK = false;
-    } else if (document.getElementById('buyin').value === '') {
-      stillOK = false;
-    } else if (document.getElementById('cashed').value === '') {
-      stillOK = false;
-    } else if (document.getElementById('date').value === '') {
-      stillOK = false;
-    } else if (document.getElementById('place').value === '') {
-      stillOK = false;
+    let ok = true;
+    if ( document.getElementById('finished').value ) {
+      ok = false;
+    } else if ( document.getElementById('entrants').value ) {
+      ok = false;
+    } else if ( document.getElementById('buyin').value ) {
+      ok = false;
+    } else if ( document.getElementById('cashed').value ) {
+      ok = false;
+    } else if ( document.getElementById('date').value ) {
+      ok = false;
+    } else if ( document.getElementById('place').value ) {
+      ok = false;
     }
-    return stillOK
+    return ok;
   }
 
   const editor = () => {
