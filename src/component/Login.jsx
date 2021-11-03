@@ -5,7 +5,7 @@ export default function Login({users, logIn}) {
   const [badLogin, setBadLogin] = useState(false);
 
   const logInHere = () => {
-    const user = users.filter(user => user.username === document.getElementById('username').value && user.password === document.getElementById('password').value )[0];
+    const user = users.find(user => user.username === document.getElementById('username').value && user.password === document.getElementById('password').value );
     if(user) {
       logIn(user);
     } else {
@@ -14,7 +14,7 @@ export default function Login({users, logIn}) {
   }
 
   return(
-    <div className="bg-blue-200 w-min m-2 pt-1 pb-1 pl-2 pr-2 border-2 border-blue-600">
+    <div className="bg-blue-200 w-min m-5 pt-1 pb-1 pl-2 pr-2 border-2 border-blue-600">
       <div className="p-1 flex">
         <label className="w-20">Username:</label>
         <input type="text" id="username" name="username" />

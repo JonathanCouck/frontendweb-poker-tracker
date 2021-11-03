@@ -1,26 +1,44 @@
-import { useState } from "react";
 import Tournament from "./Tournament";
+import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
+import { useState } from "react";
 
-export default function Tournaments({user, tournaments, saveTournament, places}) {
-  //const [profitLoss, setProfitLoss] = useState(tournaments.reduce((prev, curr) => prev+(curr.cashed-curr.buyin),0));
+export default function Tournaments({ user, tournaments, places, addTournament, editTournament, deleteTournament }) {
 
-  const getPlaceName = (id) => {
-    return places.filter(place => place.id===id)[0].name;
+  const [adder, setAdder] = useState(false);
+
+  const changeAdder = () => {
+    setAdder(!adder)
   }
-  const getPlaceId = (name) => {
-    return places.filter(place => place.name===name)[0].id;
+
+  const _addTournament = () => {
+    addTournament()
   }
-  const saveTournament2 = (id, entrants, finished, buyin, cashed, date, place) => {
-    saveTournament(id, entrants, finished, buyin, cashed, date, getPlaceId(place))
+  const _editTournament = () => {
+    editTournament()
+  }
+  const _deleteTournament = () => {
+    deleteTournament()
   }
 
   return(
     <div className="m-2" >
-      <span className="text-white"> Tournaments of {user.first_name+" "+user.last_name}: </span>
+      <span className="text-white"> Tournaments of {user.username}: </span>
       <div className="flex text-black flex-wrap">
         {tournaments.map(tour =>
-          <Tournament {...tour} place={getPlaceName(tour.place_id)} saveTournament={saveTournament2} />
+          <Tournament {...tour} places={places} key={tour.id} />
         )}
+        {adder && 
+        <> 
+          <Tournament places={places} adding={true} newTournament={true} />
+          <div >
+            <AiOutlineMinus color="black" size={35} className="border-2 border-blue-600 rounded-md bg-blue-200 m-1 hover:bg-blue-600 cursor-pointer rounded-lg" onClick={changeAdder} />
+          </div>
+        </>
+        }
+        {!adder &&
+        <div >
+          <AiOutlinePlus color="black" size={35} className="border-2 border-blue-600 rounded-md bg-blue-200 m-1 hover:bg-blue-600 cursor-pointer rounded-lg" onClick={changeAdder} />
+        </div>}
       </div>
     </div>
   )
