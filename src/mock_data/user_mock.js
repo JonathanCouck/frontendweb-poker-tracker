@@ -5,7 +5,7 @@ const USER_DATA = [
     password: "password",
     first_name: "Guido",
     last_name: "Couck",
-    birth_date: "1958-08-28T23:00:00.000Z",
+    birth_date: "1958-08-28",
     favorite_place_id: "a521ea17-81a0-462c-946d-177292d57617"
   },
   {
@@ -14,7 +14,7 @@ const USER_DATA = [
     password:"password",
     first_name: "Jonathan",
     last_name: "Couck",
-    birth_date: "1999-04-15T22:00:00.000Z",
+    birth_date: "1999-04-15",
     favorite_place_id: "77e7e385-610a-4d7f-a203-92166de7d946"
   },
   {
@@ -23,7 +23,7 @@ const USER_DATA = [
     password:"password",
     first_name: "Daniel",
     last_name: "Negreanu",
-    birth_date: "1974-07-25T23:00:00.000Z",
+    birth_date: "1974-07-25",
     favorite_place_i: "77e7e385-610a-4d7f-a203-92166de7d946"
   }
 ];

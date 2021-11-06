@@ -34,7 +34,6 @@ function App() {
     setCashgames([]);
     setUser({});
     setLoginScreen(true);
-    console.log()
   };
 
   const changeScreen = (screen) => {
@@ -44,36 +43,32 @@ function App() {
     setCurrScreen('Settings');
   };
 
-  const addTournament = ( buyin, cashed, date, entrants, finished, place_id ) => {
+  const addTournament = ( newTournament ) => {
     const newTournaments = tournaments;
-    newTournaments[newTournaments.length]={ id:'ffabb1ef-6944-484e-a084-f3cbd26babd2', buyin:buyin, cashed:cashed, date:date, 
-      entrants:entrants, finished:finished, place_id: place_id, player_id: user.id};
+    newTournaments[tournaments.length] = newTournament;
     setTournaments(newTournaments);
   };
-  const editTournament = ( id, buyin, cashed, date, entrants, finished, place_id ) => {
-    const newTournaments = tournaments.map(tour => tour.id===id? {
-      id:id, player_id: user.id, place_id:place_id, entrants:entrants, finished:finished, buyin:buyin, cashed:cashed, date:date 
-    }: tour);
+  const editTournament = ( editedTournament ) => {
+    const newTournaments = tournaments.map(tour => tour.id===editedTournament.id ? editedTournament : tour);
     setTournaments(newTournaments);
   };
   const deleteTournament = (id) => {
-    setTournaments(tournaments.map(tour => tour.id !== id));
+    const newTournaments = tournaments.filter(tour => tour.id !== id);
+    setTournaments(newTournaments);
   };
 
-  const addCashgame = ( place_id, big_blind, small_blind, date, in_for, out_for ) => {
+  const addCashgame = ( newCashgame ) => {
     const newCashgames = cashgames;
-    newCashgames[newCashgames.length] = { id:'11111111-6944-484e-a084-f3cbd26babd2',  big_blind:big_blind, small_blind:small_blind, date:date, 
-      in_for:in_for, out_for:out_for, place_id:place_id, player_id:user.id};
-    setCashgames(newCashgames);
+    newCashgames[tournaments.length] = newCashgame;
+    setTournaments(newCashgames);
   };
-  const editCashgame = ( id, place_id, small_blind, big_blind, in_for, out_for, date ) => {
-    const newCashgames = cashgames.map(cash => cash.id===id? {
-      id:id, player_id:user.id, place_id:place_id, small_blind:small_blind, big_blind:big_blind, in_for:in_for, out_for:out_for, date:date
-    } : cash);
-    setCashgames(newCashgames);
+  const editCashgame = ( editedCashgame ) => {
+    const newCashgames = cashgames.map(cash => cash.id===editedCashgame.id ? editedCashgame : cash);
+    setCashgames(newCashgames)
   };
   const deleteCashgame = (id) => {
-    setCashgames(cashgames.map(cash => cash.id !== id));
+    const newCashgames = cashgames.filter(cash => cash.id !== id)
+    setCashgames(newCashgames);
   };
 
   const logScreen = () => {

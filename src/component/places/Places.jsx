@@ -20,7 +20,7 @@ export default function Places({places, addPlace}) {
     <span className="text-white"> Saved places across the platform: </span>
       <div className="flex text-black flex-wrap">
         {places.map(place =>
-          <Place places={places} {...place}/>
+          <Place places={places} {...place} key={place.id}/>
         )}
         {/*addingPlace && 
         <> 

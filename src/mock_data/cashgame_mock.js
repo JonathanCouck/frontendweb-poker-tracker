@@ -7,7 +7,7 @@ const CASHGAME_DATA = [
     big_blind: 1,
     in_for: 150,
     out_for: 420,
-    date: "2021-04-12T22:00:00.000Z"
+    date: "2021-04-12"
   },
   {
     id: "8614e153-10ae-49be-a697-5fbd7823779e",
@@ -17,7 +17,7 @@ const CASHGAME_DATA = [
     big_blind: 2,
     in_for: 200,
     out_for: 350,
-    date: "2021-05-22T22:00:00.000Z"
+    date: "2021-05-22"
   },
   {
     id: "970cdfbe-736d-41c0-ac0c-d13f400522af",
@@ -27,7 +27,7 @@ const CASHGAME_DATA = [
     big_blind: 5,
     in_for: 420,
     out_for: 380,
-    date: "2021-05-26T22:00:00.000Z"
+    date: "2021-05-26"
   }
 ];
 

@@ -1,4 +1,5 @@
 import Cashgame from "./Cashgame";
+import NewCashgame from "./NewCashgame";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { useState } from "react";
 
@@ -9,14 +10,17 @@ export default function Cashgames({user, cashgames, places, addCashgame, editCas
     setAdder(!adder);
   }
 
-  const _addCashgame = () => {
-    addCashgame()
+  const _addCashgame = (c) => {
+    c.player_id = user.id;
+    addCashgame(c);
+    changeAdder();
   }
-  const _editCashgame = () => {
-    editCashgame()
+  const _editCashgame = (c) => {
+    c.player_id = user.id;
+    editCashgame(c);
   }
-  const _deleteCashgame = () => {
-    deleteCashgame()
+  const _deleteCashgame = (id) => {
+    deleteCashgame(id)
   }
 
   return(
@@ -24,10 +28,10 @@ export default function Cashgames({user, cashgames, places, addCashgame, editCas
       <span className="text-white"> Cashgames of {user.username}: </span>
       <div className="flex text-black flex-wrap">
         {cashgames.map(cash =>
-          <Cashgame {...cash} key={cash.id} places={places} />
+          <Cashgame {...cash} key={cash.id} places={places} editCashgame={_editCashgame} deleteCashgame={_deleteCashgame} />
         )}
         {adder && <> 
-          <Cashgame places={places} adding={true} newTournament={true} />
+          <NewCashgame places={places} addCashgame={_addCashgame} />
           <div>
             <AiOutlineMinus color="black" size={35} className="border-2 border-red-600 rounded-md bg-red-200 m-1 hover:bg-red-600 cursor-pointer rounded-lg" onClick={changeAdder} />
           </div>
