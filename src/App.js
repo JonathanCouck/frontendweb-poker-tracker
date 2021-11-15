@@ -1,102 +1,130 @@
 import './App.css';
-import { useState } from 'react';
-import MenuBar from './component/menubar/MenuBar';
-import Footer from './component/Footer';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import Tournaments from './component/tournaments/Tournaments';
 import Cashgames from './component/cashgames/Cashgames';
 import Places from './component/places/Places';
-import Login from './component/Login';
-import USER_DATA from './mock_data/user_mock';
-import TOURNAMENT_DATA from './mock_data/tournament_mock';
-import CASHGAME_DATA from './mock_data/cashgame_mock';
-import PLACE_DATA from './mock_data/place_mock';
+import LoginForm from './component/LoginForm';
+import RegisterForm from './component/RegisterForm';
+import MenuBar from './component/menubar/MenuBar';
 import UserSettings from './component/UserSettings';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 function App() {
-  const [user, setUser] = useState(null);
-  const [users] = useState(USER_DATA);
-  const [tournaments, setTournaments] = useState([]);
-  const [cashgames, setCashgames] = useState([]);
-  const [places, setPlaces] = useState(PLACE_DATA);
-  const [loginScreen, setLoginScreen] = useState(true);
-  const [currScreen, setCurrScreen] = useState('Tournaments');
+  const [user, setUser] = useState({});
+  const [places, setPlaces] = useState([]);
+  const [screen, setScreen] = useState('login');
+	const [error, setError] = useState('');
+	const [loading, setLoading] = useState(false);
+
+  useEffect(()=> {
+    const getPlaces = async () => {
+      try{
+        setError('');
+        setLoading(true);
+        const response = await axios.get(`http://localhost:9000/api/places`,{
+          params: {
+            limit: 16,
+            offset: 0
+          }
+        });
+        setPlaces(response.data.data);
+      } catch (err) {
+        console.log(err);
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getPlaces();
+  }, []);
 
   const logIn = (u) => {
     setUser(u);
-    setLoginScreen(false);
-    setCashgames(CASHGAME_DATA.filter(cash => cash.player_id === u.id));
-    setTournaments(TOURNAMENT_DATA.filter(tour => tour.player_id === u.id));
-    setCurrScreen('Tournaments');
+    setScreen('main');
   };
+
   const signOut = () => {
-    setCurrScreen('')
-    setTournaments([]);
-    setCashgames([]);
     setUser({});
-    setLoginScreen(true);
+    setScreen('login');
   };
 
-  const changeScreen = (screen) => {
-    setCurrScreen(screen);
-  };
-  const settingsScreen = () => {
-    setCurrScreen('Settings');
+  const setRegister = (value) => {
+    setScreen('register')
   };
 
-  const addTournament = ( newTournament ) => {
-    const newTournaments = tournaments;
-    newTournaments[tournaments.length] = newTournament;
-    setTournaments(newTournaments);
-  };
-  const editTournament = ( editedTournament ) => {
-    const newTournaments = tournaments.map(tour => tour.id===editedTournament.id ? editedTournament : tour);
-    setTournaments(newTournaments);
-  };
-  const deleteTournament = (id) => {
-    const newTournaments = tournaments.filter(tour => tour.id !== id);
-    setTournaments(newTournaments);
-  };
-
-  const addCashgame = ( newCashgame ) => {
-    const newCashgames = cashgames;
-    newCashgames[tournaments.length] = newCashgame;
-    setTournaments(newCashgames);
-  };
-  const editCashgame = ( editedCashgame ) => {
-    const newCashgames = cashgames.map(cash => cash.id===editedCashgame.id ? editedCashgame : cash);
-    setCashgames(newCashgames)
-  };
-  const deleteCashgame = (id) => {
-    const newCashgames = cashgames.filter(cash => cash.id !== id)
-    setCashgames(newCashgames);
+  const backToLogin = () => {
+    setScreen('login')
   };
 
   const logScreen = () => {
     return( 
-      <div>
-        <Login users={users} logIn={logIn} />
-        <Footer />
+      <div className="flex justify-center" >
+        <LoginForm logIn={logIn} setRegister={setRegister} />
       </div>
     );
   }
 
-  const mainScreen = () => {
-    return (
-      <div>
-        <MenuBar user={user} signOut={signOut} changeScreen={changeScreen} settings={settingsScreen}/>
-        <div>
-          {currScreen==='Tournaments' && <Tournaments tournaments={tournaments} user={user} places={places} addTournament={addTournament} editTournament={editTournament} deleteTournament={deleteTournament} />}
-          {currScreen==='Cashgames' && <Cashgames cashgames={cashgames} user={user} places={places} addCashgame={addCashgame} editCashgame={editCashgame} deleteCashgame={deleteCashgame} />}
-          {currScreen==='Places' && <Places places={places} />}
-          {currScreen==='Settings' && <UserSettings user={user} places={places}/>}
-        </div>
-        <Footer />
+  const regScreen = () => {
+    return(
+      <div className="flex justify-center" >
+        <RegisterForm places={places} backToLogin={backToLogin} />
       </div>
-    );
+    )
   }
+
+  useEffect(() => {
+    //getUsers();
+    //getPlaces();
+    setScreen('login');
+  }, [])
+
+  if (loading) {
+    return (
+      <p className="text-red-500">
+        {JSON.stringify(error, null, 2)}
+      </p>
+    )
+  }
+
+  const mainScreen = () => { 
+    return (
+      <Router>
+        <div>
+          <MenuBar user={user} signOut={signOut}/>
+          
+          <Switch>
+            <Route path="/tournaments">
+              <Tournaments user={user} places={places} />
+            </Route>
+            <Route path="/cashgames">
+              <Cashgames user={user} places={places} />
+            </Route>
+            <Route path="/places">
+              <Places places={places} />
+            </Route>
+            <Route path="/user">
+            <UserSettings user={user} places={places} />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    );
+  };
   
-  return (
-    loginScreen ? logScreen() : mainScreen()
-  );
+  switch (screen) {
+    case 'login':
+      return logScreen();
+    case 'register':
+      return regScreen();
+    case 'main':
+      return mainScreen();
+    default:
+      return <div className="text-white font-bold">Error loading page</div>
+  }
 }
 export default App;

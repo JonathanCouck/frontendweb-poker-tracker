@@ -15,7 +15,7 @@ export const CashgamesProvider = ({ children }) => {
     try {
       setError();
       setLoading(true);
-      const {data} = await axios.get(`${config.base_url}cashgames?limit=25&offset=0`);
+      const {data} = await axios.get(`${config.base_url}cashgames?limit=16&offset=0`);
       setCashgames(data.data);
     } catch (err) {
       setError(err);
@@ -74,7 +74,9 @@ export const CashgamesProvider = ({ children }) => {
     createOrUpdateCashgame, deleteCashgame, setCashgameToUpdate,
   }), [ cashgames, error, loading, currentCashgame, createOrUpdateCashgame, deleteCashgame, setCashgameToUpdate ]);
 
-  <CashgamesContext.Provider value = {value} >
-    {children}
-  </CashgamesContext.Provider>
+  return(
+    <CashgamesContext.Provider value = {value} >
+      {children}
+    </CashgamesContext.Provider>
+  )
 }

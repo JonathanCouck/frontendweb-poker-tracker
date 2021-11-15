@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { AiOutlineCheckCircle, AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { useForm } from 'react-hook-form';
+import Input from '../Input';
 
 export default function Cashgame({ id, small_blind, big_blind, in_for, out_for, date, place_id, places, editCashgame, deleteCashgame }) {
   const {register, handleSubmit, formState:{errors}, reset} = useForm();
@@ -26,15 +27,6 @@ export default function Cashgame({ id, small_blind, big_blind, in_for, out_for, 
     if(window.confirm("Are you sure you want to delete this Cashgame?")) {
       deleteCashgame(id);
     }
-  }
-
-  const Input = ({label , type , defaultValue,  validation, cls }) => {
-    return(
-      <input 
-              {...register(label, validation)} 
-              defaultValue={defaultValue}
-              type={type} id={label} name={label} className={cls} /> 
-    )
   }
 
   const editor = () => {

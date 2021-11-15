@@ -74,7 +74,9 @@ export const TournamentsProvider = ({ children }) => {
     createOrUpdateTournament, deleteTournament, setTournamentToUpdate,
   }), [ tournaments, error, loading, currentTournament, createOrUpdateTournament, deleteTournament, setTournamentToUpdate ]);
 
-  <TournamentsContext.Provider value = {value} >
-    {children}
-  </TournamentsContext.Provider>
+  return(
+    <TournamentsContext.Provider value = {value} >
+      {children}
+    </TournamentsContext.Provider>
+  )
 }

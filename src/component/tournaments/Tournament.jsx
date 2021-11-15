@@ -28,7 +28,7 @@ export default function Tournament({ id, entrants, finished, buyin, cashed, date
       deleteTournament(id);
     }
   }
-
+  
   const Input = ({label , type , defaultValue,  validation, cls }) => {
     return(
       <input 

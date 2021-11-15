@@ -52,6 +52,16 @@ const PLACE_DATA = [
     postal_code: 8430,
     street: "Westendelaan",
     house_number: 94
+  },
+  {
+    id: "da060469-0275-480e-8d83-a19c9224c09b",
+    name: "Online",
+    country: "-",
+    city: "-",
+    postal_code: 0,
+    street: "-",
+    house_number: 0
   }
+
 ];
 export default PLACE_DATA;

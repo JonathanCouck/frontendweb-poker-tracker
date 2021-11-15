@@ -1,9 +1,9 @@
-import Place from "../places/Place";
-import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
-import { useState } from "react";
+import Place from "./Place";
+//import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+//import { useState } from "react";
 
 export default function Places({places, addPlace}) {
-
+/*
   const [addingPlace, setAddingPlace] = useState(false);
 
   const adding = () => {
@@ -13,7 +13,7 @@ export default function Places({places, addPlace}) {
   const addNewPlace = ( name, country, city, postal_code, street, house_number ) => {
     setAddingPlace(false);
     addPlace( name, country, city, postal_code, street, house_number );
-  }
+  }*/
 
   return(
     <div className="m-2" >
