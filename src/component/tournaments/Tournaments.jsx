@@ -1,7 +1,7 @@
 import Tournament from "./Tournament";
 import NewTournament from "./NewTournament";
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios';
 
 export default function Tournaments({ user, places }) {
@@ -64,7 +64,7 @@ export default function Tournaments({ user, places }) {
     try{
       setError('');
       setLoading(true);
-      await axios.put(`http://localhost:9000/api/tournaments/${user.id}`, t);
+      await axios.put(`http://localhost:9000/api/tournaments/${t.id}`, t);
     } catch (err) {
       console.log(err);
       setError(err);
@@ -75,9 +75,19 @@ export default function Tournaments({ user, places }) {
     getTournaments();
   }
 
-  const deleteTournament = (id) => {
-    const newTournaments = tournaments.filter(tour => tour.id !== id);
-    setTournaments(newTournaments);
+  const deleteTournament = async(id) => {
+    try{
+      setError('');
+      setLoading(true);
+      await axios.delete(`http://localhost:9000/api/tournaments/${id}`);
+    } catch (err) {
+      console.log(err);
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+
+    getTournaments();
   }
 
   return(

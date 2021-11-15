@@ -16,7 +16,7 @@ export default function Tournament({ id, entrants, finished, buyin, cashed, date
     const {finished, entrants, buyin, cashed, date, place} = data
     const newT = {id:id, place_id:getPlaceId(place), entrants:entrants, finished:finished, buyin:buyin, cashed:cashed, date:date};
     
-    if(window.confirm("Are you sure you want to delete this Tournament?")) {
+    if(window.confirm("Are you sure you want to edit this Tournament?")) {
       editTournament(newT)
     }
     changeEditing();

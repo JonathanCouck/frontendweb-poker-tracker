@@ -6,8 +6,8 @@ export default function NewTournament({places, addTournament}) {
   const getPlaceId = (name) => places.find(place => place.name===name).id;
 
   const onSubmit = (data) => {
-    const {place} = data
-    const newT = {place_id:getPlaceId(place), ...data};
+    const newT = {place_id:getPlaceId(data.place), ...data};
+    console.log(newT);
     addTournament(newT)
 
     reset();

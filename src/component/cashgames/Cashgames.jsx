@@ -2,7 +2,7 @@ import Cashgame from "./Cashgame";
 import NewCashgame from "./NewCashgame";
 import CASHGAME_DATA from '../../mock_data/cashgame_mock';
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios';
 
 export default function Cashgames({user, places }) {
@@ -12,26 +12,27 @@ export default function Cashgames({user, places }) {
 	const [loading, setLoading] = useState(false);
   const [earnings, setEarnings] = useState(0);
 
+  const getCashgames = async () => {
+    try{
+      setError('');
+      setLoading(true);
+      const response = await axios.get(`http://localhost:9000/api/cashgames/${user.id}`,{
+        params: {
+          limit: 16,
+          offset: 0
+        }
+      });
+      console.log(response.data.data);
+      setCashgames(response.data.data);
+    } catch (err) {
+      console.log(err);
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(()=> {
-    const getCashgames = async () => {
-      try{
-        setError('');
-        setLoading(true);
-        const response = await axios.get(`http://localhost:9000/api/cashgames/${user.id}`,{
-          params: {
-            limit: 16,
-            offset: 0
-          }
-        });
-        console.log(response.data.data);
-        setCashgames(response.data.data);
-      } catch (err) {
-        console.log(err);
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
     getCashgames();
   }, []);
 
@@ -43,21 +44,50 @@ export default function Cashgames({user, places }) {
     setAdder(!adder);
   }
 
-  const addCashgame = (c) => {
+  const addCashgame = async(c) => {
     c.player_id = user.id;
-    const newCashgames = cashgames;
-    newCashgames[cashgames.length] = c;
-    setCashgames(newCashgames);
-    changeAdder();
+    try{
+      setError('');
+      setLoading(true);
+      await axios.post(`http://localhost:9000/api/cashgames`, c);
+    } catch (err) {
+      console.log(err);
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+
+    getCashgames();
+    setAdder(false);
   }
-  const editCashgame = (c) => {
+  const editCashgame = async(c) => {
     c.player_id = user.id;
-    const newCashgames = cashgames.map(cash => cash.id===c.id ? c : cash);
-    setCashgames(newCashgames)
+    try{
+      setError('');
+      setLoading(true);
+      await axios.put(`http://localhost:9000/api/cashgames/${c.id}`, c);
+    } catch (err) {
+      console.log(err);
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+
+    getCashgames();
   }
-  const deleteCashgame = (id) => {
-    const newCashgames = cashgames.filter(cash => cash.id !== id)
-    setCashgames(newCashgames);
+  const deleteCashgame = async(id) => {
+    try{
+      setError('');
+      setLoading(true);
+      await axios.delete(`http://localhost:9000/api/cashgames/${id}`);
+    } catch (err) {
+      console.log(err);
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+
+    getCashgames();
   }
 
   return(
