@@ -66,7 +66,7 @@ export default function UserSettings({user, places, editUser}) {
         <span className="col-start-1 col-span-2 row-start-3 font-semibold"> Last name: </span>
         <span className="col-start-3 col-span-3 row-start-3"> {user.last_name} </span>
         <span className="col-start-1 col-span-2 row-start-4 font-semibold"> Date of birth: </span>
-        <span className="col-start-3 col-span-3 row-start-4"> {user.birth_date} </span>
+        <span className="col-start-3 col-span-3 row-start-4"> {user.birth_date.substring(0,10)} </span>
         <span className="col-start-1 col-span-2 row-start-5 font-semibold"> Favorite place: </span> 
         <span className="col-start-3 col-span-3 row-start-5"> {getPlaceName(user.favorite_place_id)} </span>
         <AiFillEdit className="col-start-5 row-start-1 hover:bg-green-600 cursor-pointer rounded-lg" color="black" size={25} onClick={changeEditing} />
