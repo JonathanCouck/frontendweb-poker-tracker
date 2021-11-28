@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
 } from "react-router-dom";
 
 import { TournamentsProvider } from "./contexts/TournamentsProvider";
@@ -17,7 +16,6 @@ import Places from "./pages/Places";
 import Cashgames from "./pages/Cashgames";
 import Tournaments from "./pages/Tournaments";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
 
 function App() {
   return (
@@ -48,3 +46,5 @@ function App() {
     </AuthProvider>
   )
 }
+
+export default App;
