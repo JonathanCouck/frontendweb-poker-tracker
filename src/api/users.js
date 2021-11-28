@@ -3,25 +3,31 @@ import axios from 'axios';
 export const login = async (username, password) => {
   const {
 		data
-	} = await axios.post(`http://localhost:9000/api/users/login`, {
+	} = await axios.post(`users/login`, {
 		username,
 		password
 	});
 	return data;
 }
 
-export const editUser = async ({
-  id,
-  username,
-  password,
-  first_name,
-  last_name,
-  birth_date,
-  favorite_place_id
+export const register = async ( {
+  username, 
+  password, 
+  birthdate,
 }) => {
-
+  const { 
+    data 
+  } = await axios.post(`users/register`, {
+    username, 
+    password, 
+    birthdate,
+  });
+  return data;
 }
 
-export const deleteUser = async (id) => {
-  
+export const getUserById = async (id) => {
+  const {
+    data
+  } = await axios.get(`users/${id}`);
+  return data;
 }
