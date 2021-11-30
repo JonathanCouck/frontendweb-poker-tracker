@@ -43,6 +43,20 @@ export const useSession = () => {
   };
 }
 
+export const useLogin = () => {
+  const { login } = useAuth();
+  return login;
+}
+
+export const useLogout = () => {
+  const { logout } = useAuth();
+  return logout;
+}
+
+export const useRegister = () => {
+  const { register } = useAuth();
+  return register;
+}
 
 export const AuthProvider = ({
   children,
@@ -84,8 +98,8 @@ export const AuthProvider = ({
       setLoading(true);
       setError(null);
       const {token, user} = await usersApi.login(username, password);
-      setUser(user);
-      setSession(token);
+      await setSession(token, user);
+      return true;
     } catch(err) {
       console.error(err);
       setError('Login failed, try again');
@@ -98,17 +112,17 @@ export const AuthProvider = ({
     setSession(null)
   }, [setSession]);
 
-  const register = useCallback( async( username, password, birthdate ) => {
+  const register = useCallback( async( username, password, birthdate, firstName, lastName ) => {
     try {
       setLoading(true);
       setError(null);
-      const { token, user } = await usersApi.register(username, password, birthdate);
+      const { token, user } = await usersApi.register(username, password, birthdate, firstName, lastName);
       setUser(user);
       setSession(token);
       return true;
     } catch (error) {
       console.error(error);
-      setError('Login failed, try again');
+      setError('Register failed, try again');
       return false;
     } finally {
       setLoading(false);

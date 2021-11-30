@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { CashgamesContext } from "../contexts/CashgameProvider";
+import { CashgamesContext } from "../contexts/CashgamesProvider";
 import Cashgame from "./Cashgame";
 
 const plusSing = () => {

@@ -3,7 +3,7 @@ import { useFormContext } from 'react-hook-form';
 const LabelSelect = ({label, options, validation, ...rest}) => {
   const { register, formState: { errors } } = useFormContext();
   return (
-    <div className="col-span-6 sm:col-span-3">
+    <div className="col-span-6 sm:col-span-3 pt-2 pb-2">
       <label htmlFor={label}>{label}</label>
       <select
         {...register(label, validation)}

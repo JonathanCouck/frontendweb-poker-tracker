@@ -1,7 +1,7 @@
 import { memo, useCallback, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-import { TournamentsContext } from "../contexts/TournamentProvider";
+import { TournamentsContext } from "../contexts/TournamentsProvider";
 
 const Tournament = memo(({id, date, place, buyin, cashed, entrants, finished}) => {
   const { deleteTournament } = useContext(TournamentsContext);

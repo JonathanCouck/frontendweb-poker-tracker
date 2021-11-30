@@ -6,7 +6,7 @@ import {
   useContext,
   useMemo
 } from 'react';
-import axios from 'axios';
+import { axios } from 'axios';
 import config from '../config.json';
 
 export const PlacesContext = createContext();

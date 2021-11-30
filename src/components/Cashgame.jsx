@@ -1,10 +1,10 @@
 import { memo, useCallback, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-import { CashgameContext } from "../contexts/CashgameProvider";
+import { CashgamesContext } from "../contexts/CashgamesProvider";
 
 const Cashgame = memo(({id, date, place, inFor, outFor, smallBlind, bigBlind}) => {
-  const { deleteCashgame } = useContext(CashgameContext);
+  const { deleteCashgame } = useContext(CashgamesContext);
 
   const handleRemove = useCallback(() => {
     deleteCashgame(id);

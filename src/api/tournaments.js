@@ -39,5 +39,5 @@ export const saveTournament = async ({
 }
 
 export const deleteTournament = async (id) => {
-  await axios.delete(`transactions/${id}`);
+  await axios.delete(`tournaments/${id}`);
 }

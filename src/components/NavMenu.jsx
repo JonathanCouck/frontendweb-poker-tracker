@@ -5,13 +5,11 @@ import { useLogout, useSession } from "../contexts/AuthProvider";
 const NavItem = ({
   to,
   label
-}) => {
-  <span>
-    <NavLink to={to}>
+}) => 
+    <NavLink to={to} className="text-xl text-gray-300 p-2 pl-5 pr-5 font-semibold hover:bg-gray-500">
       {label}
     </NavLink>
-  </span>
-};
+;
 
 export default function NavMenu() {
   const { isAuthed } = useSession();
@@ -22,33 +20,31 @@ export default function NavMenu() {
   }, [logout]);
 
   return (
-    <div>
-      <nav className="flex space-x-6">
-        {
-          isAuthed ? (
-            <>
-              <NavItem to="/tournaments" label="Tournaments" />
-              <NavItem to="/cashgames" label="Cashgames" />
-              <NavItem to="/places" label="Places" />
-            </>
-          ) : null
-        }
-        <div className="flex-1" ></div>
-        {
-          !isAuthed ? (
-            <>
-              <NavItem to="/login" label="Sign in" />
-              <NavItem to="/register" label="Register" />
-            </>
-          ) : (
-            <>
-              <button onClick={handleLogout} >
-                Sign out
-              </button>
-            </>
-          )
-        }
-      </nav>
-    </div>
+    <nav className="flex bg-gray-600">
+      {
+        isAuthed ? (
+          <>
+            <NavItem to="/tournaments" label="Tournaments" />
+            <NavItem to="/cashgames" label="Cashgames" />
+            <NavItem to="/places" label="Places" />
+          </>
+        ) : null
+      }
+      <div className="flex-1" ></div>
+      {
+        !isAuthed ? (
+          <>
+            <NavItem to="/" label="Sign in" />
+            <NavItem to="/register" label="Register" />
+          </>
+        ) : (
+          <>
+            <button onClick={handleLogout} >
+              Sign out
+            </button>
+          </>
+        )
+      }
+    </nav>
   )
 }

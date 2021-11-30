@@ -1,12 +1,12 @@
-import axios from 'axios';
+import { axios } from 'axios';
 
 export const login = async (username, password) => {
   const {
 		data
-	} = await axios.post(`users/login`, {
+	} = await axios.post(`users/login/`, {
 		username,
 		password
-	});
+	}); 
 	return data;
 }
 
@@ -14,6 +14,8 @@ export const register = async ( {
   username, 
   password, 
   birthdate,
+  firstName,
+  lastName,
 }) => {
   const { 
     data 
@@ -21,6 +23,8 @@ export const register = async ( {
     username, 
     password, 
     birthdate,
+    firstName,
+    lastName,
   });
   return data;
 }

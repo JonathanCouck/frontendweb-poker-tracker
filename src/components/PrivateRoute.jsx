@@ -11,7 +11,7 @@ export default function PrivateRoute({children, ...rest}) {
         isAuthed ? (
           children
         ) : (
-          <Redirect from={pathname} to="/login" />
+          <Redirect from={pathname} to="/" />
         )
       }
     </Route>

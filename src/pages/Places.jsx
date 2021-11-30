@@ -1,6 +1,4 @@
 import { useState, useCallback } from "react";
-import { IoAdd } from "react-icons/io5";
-import { Link } from "react-router-dom";
 import PlaceList from "../components/PlaceList";
 
 export default function Places() {
@@ -21,7 +19,7 @@ export default function Places() {
           onChange={handleInputChange}
           placeholder="Search"
         />
-        <button type="button" data-cy="transactions_search_btn" onClick={handleSearch}>
+        <button type="button" data-cy="tournaments_search_btn" onClick={handleSearch}>
           Search
         </button>
       </div>

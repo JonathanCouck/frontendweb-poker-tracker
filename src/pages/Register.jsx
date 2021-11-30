@@ -11,7 +11,6 @@ export default function Register() {
   const { loading, error, isAuthed } = useSession();
   const {
     handleSubmit,
-    reset,
     getValues,
   } = methods;
 
@@ -28,10 +27,6 @@ export default function Register() {
       history.replace('/');
     }
   }, [history, register]);
-
-  const handleCancel = useCallback(() => {
-    reset()
-  }, [reset]);
 
   const validationRules = useMemo(() => ({
     firstName: {
@@ -63,9 +58,9 @@ export default function Register() {
 
   return (
     <FormProvider {...methods}>
-      <div>
-        <h1>Register</h1>
-        <form onSubmit={handleSubmit(handleRegister)}>
+      <div className="w-96">
+        <h1 className="m-3 text-white font-semibold">Register</h1>
+        <form onSubmit={handleSubmit(handleRegister)}  className="bg-blue-200 m-5 pt-1 pb-1 pl-2 pr-2 border-2 border-blue-600 rounded-md">
           {
             error ? (
               <p className="text-red-600">
@@ -78,18 +73,18 @@ export default function Register() {
             type="text"
             defaultValue=""
             placeholder="Username123"
-            validation={validationRules.username} />
+            validation={validationRules.username}/>
           <LabelInput
             label="firstName"
             type="text"
             defaultValue=""
-            placeholder="Username123"
+            placeholder="First"
             validation={validationRules.firstName} />
           <LabelInput
             label="lastName"
             type="text"
             defaultValue=""
-            placeholder="Username123"
+            placeholder="Last"
             validation={validationRules.lastName} />
           <LabelInput
             label="password"
@@ -104,12 +99,9 @@ export default function Register() {
             placeholder=""
             validation={validationRules.confirmPassword} />
           
-          <div>
-            <button type="submit" disabled={loading} className="disabled:opacity-50">
+          <div className="flex flex-row justify-end p-2">
+            <button type="submit" disabled={loading} className="pr-2 pl-2 m-1 font-semibold border-2 bg-gray-200 border-gray-400 hover:bg-gray-400 disabled:opacity-50">
               Register
-            </button>
-            <button type="button" onClick={handleCancel}>
-              Cancel
             </button>
           </div>
         </form>

@@ -20,7 +20,6 @@ export default function Login() {
   const methods = useForm();
   const {
     handleSubmit,
-    reset,
   } = methods;
 
   const handleLogin = useCallback(async({username,password}) => {
@@ -31,19 +30,15 @@ export default function Login() {
     }
   }, [history, login]);
 
-  const handleCancel = useCallback(() => {
-    reset();
-  }, [reset]);
-
   if(isAuthed) {
-    return <Redirect from="/login" to="/tournaments"/>
+    return <Redirect from="/" to="/tournaments"/>
   }
 
   return (
     <FormProvider {...methods} >
-      <div>
-        <h1>Sign in</h1>
-        <form onSubmit={handleSubmit(handleLogin)} className="bg-blue-200 w-min m-5 pt-1 pb-1 pl-2 pr-2 border-2 border-blue-600 rounded-md">
+      <div className="w-96">
+        <h1 className="m-3 text-white font-semibold">Sign in</h1>
+        <form onSubmit={handleSubmit(handleLogin)} className="bg-blue-200 m-5 pt-1 pl-2 pr-2 border-2 border-blue-600 rounded-md">
           {
             error ? (
               <p className="text-red-600">
@@ -64,20 +59,16 @@ export default function Login() {
             type="password"
             defaultValue=""
             data-cy="password_input"
-            placeholder="Username123"
+            placeholder=""
             validation={validationRules.password} />
 
-          <div className="flex flex-row justify-end">
+          <div className="flex flex-row justify-end p-2">
             <button
               data-cy="submit_btn"
               type="submit"
               disabled={loading}
-              className="disabled:opacity-50">
+              className="pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400">
               Sign in
-            </button>
-
-            <button type="button" onClick={handleCancel}>
-              Cancel
             </button>
           </div>
         </form>

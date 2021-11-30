@@ -16,6 +16,7 @@ import Places from "./pages/Places";
 import Cashgames from "./pages/Cashgames";
 import Tournaments from "./pages/Tournaments";
 import Login from "./pages/Login";
+import Register from "./pages/Register"
 
 function App() {
   return (
@@ -26,9 +27,14 @@ function App() {
             <Router>
               <NavMenu />
               <Switch>
+
                 <Route path="/" exact>
                   <Login />
                 </Route>
+                <Route path="/register" exact>
+                  <Register />
+                </Route>
+
                 <PrivateRoute path="/tournaments" exact>
                   <Tournaments />
                 </PrivateRoute>
@@ -39,6 +45,7 @@ function App() {
                   <Places />
                 </PrivateRoute>
               </Switch>
+              
             </Router>
           </CashgamesProvider>
         </TournamentsProvider>

@@ -1,10 +1,6 @@
-import { memo, useCallback } from 'react';
-import StarRating from './StarRating';
-import { usePlaces } from '../contexts/PlacesProvider';
+import { memo } from 'react';
 
 const Place = memo(({ id, name, country, city, postal_code, street, house_number }) => {
-	const { ratePlace } = usePlaces();
-
   return (
     <div className="grid grid-cols-5 grid-row-6 border-2 border-yellow-600 rounded-md bg-yellow-200 m-1 text-left p-5 w-96">
       <b className="col-start-1 col-span-4 row-start-1 row-span-1 pb-2 text-lg pb-5"> {name} </b>

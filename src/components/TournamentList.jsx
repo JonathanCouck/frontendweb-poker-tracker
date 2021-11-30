@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { TournamentsContext } from "../contexts/TournamentProvider";
+import { TournamentsContext } from "../contexts/TournamentsProvider";
 import Tournament from "./Tournament";
 
 const plusSing = () => {
