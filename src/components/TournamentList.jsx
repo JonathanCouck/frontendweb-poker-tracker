@@ -14,7 +14,6 @@ const plusSing = () => {
 
 export default function TournamentList() {
   const { tournaments, error, loading } = useContext(TournamentsContext);
-
   if(loading) return <h1 data-cy="loading"> Loading... </h1>;
 
   if(error) return(

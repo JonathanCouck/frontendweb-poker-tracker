@@ -24,7 +24,6 @@ export default function Login() {
 
   const handleLogin = useCallback(async({username,password}) => {
     const success = await login(username, password);
-
     if(success) {
       history.replace('/');
     }
@@ -37,8 +36,8 @@ export default function Login() {
   return (
     <FormProvider {...methods} >
       <div className="w-96">
-        <h1 className="m-3 text-white font-semibold">Sign in</h1>
-        <form onSubmit={handleSubmit(handleLogin)} className="bg-blue-200 m-5 pt-1 pl-2 pr-2 border-2 border-blue-600 rounded-md">
+        <h1 className="m-3 font-semibold">Sign in</h1>
+        <form onSubmit={handleSubmit(handleLogin)} className="bg-blue-200 m-5 pt-1 pl-2 pr-2 border-2 border-blue-600 rounded-md text-black">
           {
             error ? (
               <p className="text-red-600">

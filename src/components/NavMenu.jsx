@@ -39,7 +39,7 @@ export default function NavMenu() {
           </>
         ) : (
           <>
-            <button onClick={handleLogout} >
+            <button onClick={handleLogout} className="text-xl text-gray-300 p-2 pl-5 pr-5 font-semibold hover:bg-gray-500" >
               Sign out
             </button>
           </>

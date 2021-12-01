@@ -1,6 +1,6 @@
 import { axios } from '.';
 
-export const getUserTournaments = async () => {
+export const getUserTournaments = async (id) => {
   const { data } = await axios.get(
     'tournaments',
     {
@@ -22,7 +22,7 @@ export const saveTournament = async ({
   date, 
   place_id,
 }) => {
-  const { data } = await axios ({
+  const { data } = await axios({
     method: id? 'put': 'post',
     url: `tournaments/${id ?? ''}`,
     data: {

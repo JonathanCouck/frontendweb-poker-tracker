@@ -1,9 +1,10 @@
-import { axios } from 'axios';
+import axios from 'axios';
+import config from '../config.json';
 
 export const login = async (username, password) => {
   const {
 		data
-	} = await axios.post(`users/login/`, {
+	} = await axios.post(`${config.base_url}users/login/`, {
 		username,
 		password
 	}); 
@@ -13,16 +14,16 @@ export const login = async (username, password) => {
 export const register = async ( {
   username, 
   password, 
-  birthdate,
+  birthDate,
   firstName,
   lastName,
 }) => {
   const { 
     data 
-  } = await axios.post(`users/register`, {
+  } = await axios.post(`${config.base_url}users/register`, {
     username, 
     password, 
-    birthdate,
+    birthDate,
     firstName,
     lastName,
   });
@@ -32,6 +33,6 @@ export const register = async ( {
 export const getUserById = async (id) => {
   const {
     data
-  } = await axios.get(`users/${id}`);
+  } = await axios.get(`${config.base_url}users/${id}`);
   return data;
 }

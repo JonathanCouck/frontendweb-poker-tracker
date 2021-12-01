@@ -14,6 +14,15 @@ export default function Register() {
     getValues,
   } = methods;
 
+  const toDateInputString = (date) => {
+    if(!date) return null;
+    if(typeof date !== Object) {
+      date = new Date(date);
+    }
+    const asString = date.toISOString();
+    return asString.substring(0, asString.indexOf("T"));
+  }
+
   const handleRegister = useCallback( async({
     firstName, 
     lastName, 
@@ -38,6 +47,9 @@ export default function Register() {
     username: {
       required: true
     },
+    birthDate: {
+      required:true
+    },
     password: {
       required: true
     },
@@ -59,8 +71,8 @@ export default function Register() {
   return (
     <FormProvider {...methods}>
       <div className="w-96">
-        <h1 className="m-3 text-white font-semibold">Register</h1>
-        <form onSubmit={handleSubmit(handleRegister)}  className="bg-blue-200 m-5 pt-1 pb-1 pl-2 pr-2 border-2 border-blue-600 rounded-md">
+        <h1 className="m-3 font-semibold">Register</h1>
+        <form onSubmit={handleSubmit(handleRegister)}  className="bg-blue-200 m-5 pt-1 pb-1 pl-2 pr-2 border-2 border-blue-600 rounded-md text-black">
           {
             error ? (
               <p className="text-red-600">
@@ -86,6 +98,12 @@ export default function Register() {
             defaultValue=""
             placeholder="Last"
             validation={validationRules.lastName} />
+          <LabelInput 
+            label="birthDate"
+            type="date"
+            defaultValue={toDateInputString(new Date())}
+            validation={validationRules.birthDate}
+            data-cy="date_input" />
           <LabelInput
             label="password"
             type="password"

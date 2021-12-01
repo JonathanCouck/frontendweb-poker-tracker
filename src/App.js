@@ -44,8 +44,8 @@ function App() {
                 <PrivateRoute path="/places" exact>
                   <Places />
                 </PrivateRoute>
+                
               </Switch>
-              
             </Router>
           </CashgamesProvider>
         </TournamentsProvider>

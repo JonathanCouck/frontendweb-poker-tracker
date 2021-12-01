@@ -112,17 +112,17 @@ export const AuthProvider = ({
     setSession(null)
   }, [setSession]);
 
-  const register = useCallback( async( username, password, birthdate, firstName, lastName ) => {
+  const register = useCallback( async( username, password, birthDate, firstName, lastName ) => {
     try {
       setLoading(true);
       setError(null);
-      const { token, user } = await usersApi.register(username, password, birthdate, firstName, lastName);
+      const { token, user } = await usersApi.register({username, password, birthDate, firstName, lastName});
       setUser(user);
       setSession(token);
       return true;
-    } catch (error) {
-      console.error(error);
-      setError('Register failed, try again');
+    } catch (err) {
+      console.error(err);
+      setError('Registering failed, try again');
       return false;
     } finally {
       setLoading(false);
