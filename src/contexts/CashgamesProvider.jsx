@@ -26,7 +26,7 @@ export const CashgamesProvider = ({
     try {
       setError();
       setLoading(true);
-      const data = await cashgamesApi.getUserCashgames(user.id);
+      const data = await cashgamesApi.getCashgames(user);
       setCashgames(data.data);
     } catch(error) {
       setError(error);

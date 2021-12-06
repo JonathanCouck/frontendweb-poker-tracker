@@ -30,7 +30,7 @@ export default function Register() {
     password,
     birthDate,
   }) => {
-    const success = await register(firstName, lastName, username, password, birthDate);
+    const success = await register(username, password, birthDate, firstName, lastName);
 
     if(success) {
       history.replace('/');

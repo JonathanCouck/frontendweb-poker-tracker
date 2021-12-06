@@ -16,7 +16,9 @@ import Places from "./pages/Places";
 import Cashgames from "./pages/Cashgames";
 import Tournaments from "./pages/Tournaments";
 import Login from "./pages/Login";
-import Register from "./pages/Register"
+import Register from "./pages/Register";
+import TournamentForm from "./pages/TournamentForm";
+import CashgameForm from "./pages/CashgameForm";
 
 function App() {
   return (
@@ -38,8 +40,14 @@ function App() {
                 <PrivateRoute path="/tournaments" exact>
                   <Tournaments />
                 </PrivateRoute>
+                <PrivateRoute path="/tournaments/add" exact> 
+                  <TournamentForm />
+                </PrivateRoute>
                 <PrivateRoute path="/cashgames" exact>
                   <Cashgames />
+                </PrivateRoute>
+                <PrivateRoute path="/cashgames/add" exact> 
+                  <CashgameForm />
                 </PrivateRoute>
                 <PrivateRoute path="/places" exact>
                   <Places />

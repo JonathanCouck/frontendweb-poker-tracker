@@ -21,12 +21,12 @@ export const TournamentsProvider = ({
   const [loading, setLoading] = useState(false);
   const [initialLoad, setInitialLoad] = useState(false);
   const [currentTournament, setCurrentTournament] = useState({});
-
+  
   const refreshTournaments = useCallback(async () => {
     try {
       setError();
       setLoading(true);
-      const data = await tournamentsApi.getUserTournaments(user.id);
+      const data = await tournamentsApi.getTournaments();
       setTournaments(data.data)
     } catch(error) {
       setError(error)

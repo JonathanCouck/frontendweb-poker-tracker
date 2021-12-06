@@ -15,7 +15,7 @@ const Tournament = memo(({id, date, place, buyin, cashed, entrants, finished}) =
 
       <b className="col-start-1 col-span-5 row-start-1 row-span-1 pb-2 text-lg pb-5"> Tournament </b>
       
-      <Link data-cy="tournament_edit_btn" to={`/tournaments/edit/${id}`} className="button col-start-6 row-start-1" >
+      <Link data-cy="tournament_edit_btn" to={`/tournaments/edit/${id}`} className="col-start-6 row-start-1" >
         <AiFillEdit color="black" size={25} className="rounded-md m-1 hover:bg-blue-600 cursor-pointer rounded-lg" />
       </Link>
 

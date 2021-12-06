@@ -7,7 +7,6 @@ import {
   useMemo
 } from 'react';
 import { axios } from 'axios';
-import config from '../config.json';
 
 export const PlacesContext = createContext();
 export const usePlaces = () => useContext(PlacesContext);
@@ -25,7 +24,7 @@ export const PlacesProvider = ({
     setLoading(true);
     const {
       data
-    } = await axios.get(`${config.base_url}places`);
+    } = await axios.get(`places`);
     setPlaces(data.data);
     return data.data;
   } catch (error) {

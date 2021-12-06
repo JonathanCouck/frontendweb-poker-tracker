@@ -1,4 +1,4 @@
-import { axios } from '.';
+import { axios } from './index';
 
 export const getAllPlaces = async () => {
   const {

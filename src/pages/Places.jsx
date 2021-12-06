@@ -10,8 +10,8 @@ export default function Places() {
 
   return (
     <>
-      <h1>Places</h1>
-      <div>
+      <h1 className="m-2 text-lg font-semibold">Places</h1>
+      <div className="m-2">
         <input 
           data-cy="places_search_input"
           type="search"

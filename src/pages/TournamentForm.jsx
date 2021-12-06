@@ -73,7 +73,7 @@ export default function TournamentForm() {
   }, [currentTournament, setValue, reset]);
 
   useEffect(() => {
-    setTournamentToUpdate(id)
+    setTournamentToUpdate(id);
   }, [id, setTournamentToUpdate]);
 
   const onSubmit = useCallback( async(data) => {
@@ -91,7 +91,7 @@ export default function TournamentForm() {
       setTournamentToUpdate(null);
       history.push("/tournaments");
     } catch(error) {
-      console.error(error)
+      console.error(error);
     }
   }, [
     createOrUpdateTournament, 
@@ -102,7 +102,8 @@ export default function TournamentForm() {
 
   return (
     <FormProvider {...methods} >
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="font-semibold m-2">{currentTournament?.id? "Edit": "Add"} tournament:</div>
+      <form onSubmit={handleSubmit(onSubmit)} className="m-2">
         <div>
           <LabelInput 
             label="date"
@@ -140,14 +141,14 @@ export default function TournamentForm() {
             validation={validationRules.place}
             data-cy="place_input" />
 
-          <div className="flex justify-end">
-            <button type="submit" data-cy="submit_tournament">
+          <div className="flex">
+            <button className="text-black p-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold hover:bg-gray-400" type="submit" data-cy="submit_tournament">
               {
                 currentTournament?.id ? "Save tournament"
                   : "Add tournament"
               }
             </button>
-            <Link className="button" to="/tournaments">
+            <Link className="text-black button p-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold hover:bg-gray-400" to="/tournaments">
               Cancel
             </Link>
           </div>
