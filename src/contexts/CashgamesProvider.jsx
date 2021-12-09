@@ -44,7 +44,6 @@ export const CashgamesProvider = ({
 
   const createOrUpdateCashgame = useCallback(async ({
     id,
-    playerId,
     placeId,
     smallBlind,
     bigBlind,
@@ -57,7 +56,7 @@ export const CashgamesProvider = ({
       setLoading(true);
       const changedCashgame = await cashgamesApi.saveCashgames({
         id,
-        playerId,
+        userId: user.id,
         placeId,
         smallBlind,
         bigBlind,

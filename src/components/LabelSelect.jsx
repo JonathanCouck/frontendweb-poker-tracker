@@ -5,7 +5,8 @@ const LabelSelect = ({label, options, validation, ...rest}) => {
   return (
     <div className="w-80 flex flex-col col-span-6 sm:col-span-3 pt-2 pb-2">
       <label htmlFor={label} className="font-semibold">{label}:</label>
-      <select
+      <select 
+        className="text-black"
         {...register(label, validation)}
         {...rest}
         id={label}

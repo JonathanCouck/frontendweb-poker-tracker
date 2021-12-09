@@ -81,7 +81,6 @@ export default function CashgameForm() {
     try {
       await createOrUpdateCashgame({
         id:currentCashgame?.id,
-        user: data.user,
         date: new Date(data.date),
         placeId: data.place,
         inFor: data.inFor,
