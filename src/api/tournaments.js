@@ -14,13 +14,14 @@ export const getTournaments = async () => {
 }
 
 export const saveTournament = async ({
-  id, 
-  finished, 
-  entrants, 
-  buyin, 
-  cashed, 
-  date, 
-  place_id,
+  id,
+  userId,
+  placeId,
+  entrants,
+  finished,
+  buyin,
+  cashed,
+  date,
 }) => {
   const { data } = await axios({
     method: id? 'put': 'post',
@@ -31,7 +32,8 @@ export const saveTournament = async ({
       buyin, 
       cashed, 
       date, 
-      place_id,
+      placeId,
+      userId,
     }
   });
 

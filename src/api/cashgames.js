@@ -16,13 +16,13 @@ export const getCashgames = async () => {
 
 export const saveCashgames = async ({
   id,
-  bigBlind, 
-  smallBlind, 
-  inFor, 
-  outFor, 
-  date, 
-  placeId,
   userId,
+  placeId,
+  smallBlind,
+  bigBlind,
+  inFor,
+  outFor,
+  date,
 }) => {
   const { data } = await axios ({
     method: id? 'put': 'post',

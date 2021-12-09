@@ -80,7 +80,6 @@ export default function TournamentForm() {
     try {
       await createOrUpdateTournament({
         id:currentTournament?.id,
-        user: data.user,
         date: new Date(data.date),
         placeId: data.place,
         entrants: data.entrants,
@@ -108,31 +107,31 @@ export default function TournamentForm() {
           <LabelInput 
             label="date"
             type="date"
-            defaultValue={toDateInputString(new Date(currentTournament.date))}
+            defaultValue={toDateInputString(new Date())}
             validation={validationRules.date}
             data-cy="date_input" />
           <LabelInput 
             label="entrants"
             type="number"
-            defaultValue={currentTournament.entrants}
+            defaultValue={0}
             validation={validationRules.entrants}
             data-cy="entrants_input" />
           <LabelInput 
             label="finished"
             type="number"
-            defaultValue={currentTournament.finished}
+            defaultValue={0}
             validation={validationRules.finished}
             data-cy="finished_input" />
           <LabelInput 
             label="buyin"
             type="number"
-            defaultValue={currentTournament.buyin}
+            defaultValue={0}
             validation={validationRules.buyin}
             data-cy="buyin_input" />
           <LabelInput 
             label="cashed"
             type="number"
-            defaultValue={currentTournament.cashed}
+            defaultValue={0}
             validation={validationRules.cashed}
             data-cy="cashed_input" />
           <LabelSelect 

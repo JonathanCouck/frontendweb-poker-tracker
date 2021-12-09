@@ -50,20 +50,19 @@ export const TournamentsProvider = ({
     buyin,
     cashed,
     date,
-    playerId,
   }) => {
     try {
       setError();
       setLoading(true);
       const changedTournament = await tournamentsApi.saveTournament({
         id,
+        userId: user.id,
         placeId,
         entrants,
         finished,
         buyin,
         cashed,
         date,
-        playerId,
       });
       await refreshTournaments();
       return changedTournament;
