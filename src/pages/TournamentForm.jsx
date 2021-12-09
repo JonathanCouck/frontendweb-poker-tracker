@@ -3,41 +3,43 @@ import { useForm, FormProvider } from "react-hook-form";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { useTournaments } from "../contexts/TournamentsProvider";
 import { PlacesContext } from "../contexts/PlacesProvider";
+import { useSession } from "../contexts/AuthProvider";
 import LabelInput from "../components/LabelInput";
 import LabelSelect from "../components/LabelSelect";
 
 const validationRules = {
-  date: { required: true },
-  place: { required: true },
+  date: { required: "this is required" },
+  place: { required: "this is required" },
   entrants: {
-    required: true,
+    required: "this is required",
     min: { value: 2, message: "min 2"},
   },
   finished: {
-    required: true,
+    required: "this is required",
     min: { value: 2, message: "min 2"},
   },
   buyin: {
-    required: true,
+    required: "this is required",
     min: { value: 1, message: "min 1"},
   },
   cashed: {
-    required: true,
+    required: "this is required",
     min: { value: 0, message: "min 0"},
   },
 }
 
 const toDateInputString = (date) => {
-  if(!date) return null;
-  if(typeof date !== Object) {
+  if (!date) return null;
+  if (typeof date !== Object) {
     date = new Date(date);
   }
   const asString = date.toISOString();
   return asString.substring(0, asString.indexOf("T"));
-}
+};
 
 export default function TournamentForm() {
   const { id } = useParams();
+  const { user } = useSession();
   const history = useHistory();
   const methods = useForm();
 
@@ -59,8 +61,8 @@ export default function TournamentForm() {
       currentTournament &&
       (Object.keys(currentTournament).length !== 0 || currentTournament.constructor !== Object) 
     ) {
-      const dateAsString = toDateInputString(new Date(currentTournament));
-      setValue("user", currentTournament.user.id);
+      const dateAsString = toDateInputString(new Date(currentTournament.date));
+      setValue("user", user.id);
       setValue("date", dateAsString);
       setValue("place", currentTournament.place.id);
       setValue("entrants", currentTournament.entrants);
@@ -79,7 +81,7 @@ export default function TournamentForm() {
   const onSubmit = useCallback( async(data) => {
     try {
       await createOrUpdateTournament({
-        id:currentTournament?.id,
+        id: currentTournament?.id,
         date: new Date(data.date),
         placeId: data.place,
         entrants: data.entrants,

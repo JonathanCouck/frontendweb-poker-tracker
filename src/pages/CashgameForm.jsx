@@ -3,26 +3,27 @@ import { useForm, FormProvider } from "react-hook-form";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { useCashgames } from "../contexts/CashgamesProvider";
 import { PlacesContext } from "../contexts/PlacesProvider";
+import { useSession } from "../contexts/AuthProvider";
 import LabelInput from "../components/LabelInput";
 import LabelSelect from "../components/LabelSelect";
 
 const validationRules = {
-  date: { required: true },
-  place: { required: true },
+  date: { required: "this is required" },
+  place: { required: "this is required" },
   bigBlind: { 
-    required: true,
+    required: "this is required",
     min: {value: 1, message: "min 1"},
   },
   smallBlind: { 
-    required: true,
+    required: "this is required",
     min: {value: 1, message: "min 1"},
   },
   inFor: { 
-    required: true,
+    required: "this is required",
     min: {value: 1, message: "min 1"},
   },
   outFor: { 
-    required: true,
+    required: "this is required",
     min: {value: 1, message: "min 1"},
   },
 }
@@ -38,6 +39,7 @@ const toDateInputString = (date) => {
 
 export default function CashgameForm() {
   const { id } = useParams();
+  const { user } = useSession();
   const history = useHistory();
   const methods = useForm();
 
@@ -60,8 +62,8 @@ export default function CashgameForm() {
       currentCashgame && 
       (Object.keys(currentCashgame).length !== 0 || currentCashgame.constructor !== Object)
     ) {
-      const dateAsString = toDateInputString(new Date(currentCashgame));
-      setValue("user", currentCashgame.user.id);
+      const dateAsString = toDateInputString(new Date(currentCashgame.date));
+      setValue("user", user.id);
       setValue("date", dateAsString);
       setValue("place", currentCashgame.place.id);
       setValue("inFor", currentCashgame.inFor);

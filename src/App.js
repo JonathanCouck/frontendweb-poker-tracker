@@ -44,7 +44,7 @@ function App() {
                   <TournamentForm />
                 </PrivateRoute>
                 <PrivateRoute path="/tournaments/edit/:id" exact> 
-                  <CashgameForm />
+                  <TournamentForm />
                 </PrivateRoute>
                 <PrivateRoute path="/cashgames" exact>
                   <Cashgames />
