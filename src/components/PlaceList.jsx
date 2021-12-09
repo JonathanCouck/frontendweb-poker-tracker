@@ -19,6 +19,16 @@ export default function PlaceList({ search }) {
     </p>
   );
 
+  if(!filteredPlaces || !filteredPlaces.length) {
+    return (
+      <> 
+        <p className="m-2 flex flex-row items-center" >
+          <span className="flex-1" > There are no places with this filter</span>
+        </p>
+      </>
+    )
+  }
+
   if(!places || !places.length) {
     return (
       <> 

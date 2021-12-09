@@ -18,6 +18,7 @@ export default function Places() {
           value={text}
           onChange={handleInputChange}
           placeholder="Search"
+          className="text-black p-1"
         />
         <button type="button" data-cy="tournaments_search_btn" className="pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold text-black hover:bg-gray-400" onClick={handleSearch}>
           Search
