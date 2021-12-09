@@ -108,31 +108,31 @@ export default function TournamentForm() {
           <LabelInput 
             label="date"
             type="date"
-            defaultValue={toDateInputString(new Date())}
+            defaultValue={toDateInputString(new Date(currentTournament.date))}
             validation={validationRules.date}
             data-cy="date_input" />
           <LabelInput 
             label="entrants"
             type="number"
-            defaultValue={0}
+            defaultValue={currentTournament.entrants}
             validation={validationRules.entrants}
             data-cy="entrants_input" />
           <LabelInput 
             label="finished"
             type="number"
-            defaultValue={0}
+            defaultValue={currentTournament.finished}
             validation={validationRules.finished}
             data-cy="finished_input" />
           <LabelInput 
             label="buyin"
             type="number"
-            defaultValue={0}
+            defaultValue={currentTournament.buyin}
             validation={validationRules.buyin}
             data-cy="buyin_input" />
           <LabelInput 
             label="cashed"
             type="number"
-            defaultValue={0}
+            defaultValue={currentTournament.cashed}
             validation={validationRules.cashed}
             data-cy="cashed_input" />
           <LabelSelect 

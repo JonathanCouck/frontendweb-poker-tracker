@@ -1,10 +1,15 @@
-import { axios } from './index';
+import { axios } from '.';
 
 export const getTournaments = async () => {
-  const { data } = await axios({
-    method: 'get',
-    url: 'tournaments/'
-  });
+  const { data } = await axios.get(
+    'tournaments',
+    {
+      params: {
+        limit: 25,
+        offset: 0,
+      }
+    }
+  );
   return data;
 }
 

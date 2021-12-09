@@ -39,7 +39,14 @@ export default function CashgameList() {
   return (
     <div className="flex text-black flex-wrap" >
       {cashgames.map(cash =>
-        <Cashgame key={cash.id} {...cash} />
+        <Cashgame key={cash.id}  
+        smallBlind={cash.smallBlind}
+        bigBlind={cash.bigBlind}
+        inFor={cash.inFor}
+        outFor={cash.outFor}
+        date={cash.date}
+        id={cash.id}
+        place={cash.place.name}/>
       )}
 
       {plusSing()}

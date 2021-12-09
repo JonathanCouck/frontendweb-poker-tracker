@@ -1,10 +1,16 @@
-import { axios } from './index';
+import { axios } from '.';
+
 
 export const getCashgames = async () => {
-  const { data } = await axios ({
-    method: 'get',
-    url: `cashgames/`
-  });
+  const { data } = await axios.get(
+    `cashgames/`,
+    {
+      params: {
+        limit: 25,
+        offset: 0,
+      }
+    }
+  );
   return data;
 }
 

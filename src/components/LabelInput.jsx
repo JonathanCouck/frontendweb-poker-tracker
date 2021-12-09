@@ -7,7 +7,6 @@ const LabelInput = ({ label, type, defaultValue, validation, ...rest }) => {
       <label htmlFor={label} className="font-semibold">{label}:</label>
       <input className="text-black"
         {...register(label, validation)}
-        defaultValue={defaultValue}
         placeholder={label}
         type={type}
         id={label}

@@ -1,4 +1,4 @@
-import { axios } from './index';
+import { axios } from '.';
 import config from '../config.json';
 
 export const login = async (username, password) => {

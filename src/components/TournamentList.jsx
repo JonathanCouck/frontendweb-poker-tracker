@@ -37,8 +37,8 @@ export default function TournamentList() {
 
   return (
     <div className="flex text-black flex-wrap" >
-      {tournaments.map(tour =>
-        <Tournament key={tour.id} {...tour} />
+      {tournaments.map(tour => 
+        <Tournament key={tour.id} buyin={tour.buyin} cashed={tour.cashed} entrants={tour.entrants} finished={tour.finished} id={tour.id} place={tour.place.name} date={tour.date} />
       )}
 
       {plusSing()}

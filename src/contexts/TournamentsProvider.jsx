@@ -27,7 +27,7 @@ export const TournamentsProvider = ({
       setError();
       setLoading(true);
       const data = await tournamentsApi.getTournaments();
-      setTournaments(data.data)
+      setTournaments(data.data);
     } catch(error) {
       setError(error)
     } finally {

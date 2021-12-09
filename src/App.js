@@ -43,10 +43,16 @@ function App() {
                 <PrivateRoute path="/tournaments/add" exact> 
                   <TournamentForm />
                 </PrivateRoute>
+                <PrivateRoute path="/tournaments/edit/:id" exact> 
+                  <CashgameForm />
+                </PrivateRoute>
                 <PrivateRoute path="/cashgames" exact>
                   <Cashgames />
                 </PrivateRoute>
                 <PrivateRoute path="/cashgames/add" exact> 
+                  <CashgameForm />
+                </PrivateRoute>
+                <PrivateRoute path="/cashgames/edit/:id" exact> 
                   <CashgameForm />
                 </PrivateRoute>
                 <PrivateRoute path="/places" exact>
