@@ -6,6 +6,7 @@ import {
   useEffect, 
   useContext 
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import * as usersApi from '../api/users';
 import * as api from '../api';
 import config from '../config.json';
@@ -61,6 +62,7 @@ export const useRegister = () => {
 export const AuthProvider = ({
   children,
 }) => {
+  const { t } = useTranslation();
   const [ready, setReady] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -102,7 +104,7 @@ export const AuthProvider = ({
       return true;
     } catch(err) {
       console.error(err);
-      setError('Login failed, try again');
+      setError(t('loginFailed'));
     } finally {
       setLoading(false);
     }
@@ -122,7 +124,7 @@ export const AuthProvider = ({
       return true;
     } catch (err) {
       console.error(err);
-      setError('Registering failed, try again');
+      setError(t('registerFailed'));
       return false;
     } finally {
       setLoading(false);

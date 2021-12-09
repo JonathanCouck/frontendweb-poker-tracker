@@ -3,6 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { useHistory, Redirect } from 'react-router';
 import LabelInput from '../components/LabelInput';
 import { useLogin, useSession } from '../contexts/AuthProvider';
+import { useTranslation } from 'react-i18next';
 
 const validationRules = {
   username: {
@@ -14,6 +15,7 @@ const validationRules = {
 };
 
 export default function Login() {
+  const { t } = useTranslation();
   const history = useHistory();
   const { loading, error, isAuthed } = useSession();
   const login = useLogin();
@@ -36,7 +38,7 @@ export default function Login() {
   return (
     <FormProvider {...methods} >
       <div className="w-96">
-        <h1 className="m-3 font-semibold">Sign in</h1>
+        <h1 className="m-3 font-semibold">{t('signIn')}</h1>
         <form onSubmit={handleSubmit(handleLogin)} className="bg-blue-200 m-5 pt-1 pl-2 pr-2 border-2 border-blue-600 rounded-md text-black">
           {
             error ? (
@@ -67,7 +69,7 @@ export default function Login() {
               type="submit"
               disabled={loading}
               className="pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400">
-              Sign in
+              {t("signIn")}
             </button>
           </div>
         </form>

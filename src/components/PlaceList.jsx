@@ -1,8 +1,10 @@
 import { useContext, useMemo } from "react";
 import { PlacesContext } from "../contexts/PlacesProvider";
 import Place from "./Place";
+import { useTranslation } from "react-i18next";
 
 export default function PlaceList({ search }) {
+  const { t } = useTranslation();
   const { places, error, loading } = useContext(PlacesContext);
 
   const filteredPlaces = useMemo(() => {
@@ -11,7 +13,7 @@ export default function PlaceList({ search }) {
     });
   }, [places, search]);
 
-  if(loading) return <h1 data-cy="loading"> Loading... </h1>;
+  if(loading) return <h1 data-cy="loading"> {t('loading')} </h1>;
 
   if(error) return(
     <p data-cy="places_error" className="m-2 error" >
@@ -23,7 +25,7 @@ export default function PlaceList({ search }) {
     return (
       <> 
         <p className="m-2 flex flex-row items-center" >
-          <span className="flex-1" > There are no places with this filter</span>
+          <span className="flex-1" > {t('noPlacesFilter')} </span>
         </p>
       </>
     )
@@ -33,7 +35,7 @@ export default function PlaceList({ search }) {
     return (
       <> 
         <p className="m-2 flex flex-row items-center" >
-          <span className="flex-1" > There are no places</span>
+          <span className="flex-1" > {t('noPlaces')} </span>
         </p>
       </>
     )

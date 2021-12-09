@@ -3,6 +3,8 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { TournamentsContext } from "../contexts/TournamentsProvider";
 import Tournament from "./Tournament";
+import { useTranslation } from "react-i18next";
+
 
 const plusSing = () => {
   return (
@@ -13,8 +15,9 @@ const plusSing = () => {
 }
 
 export default function TournamentList() {
+  const { t } = useTranslation();
   const { tournaments, error, loading } = useContext(TournamentsContext);
-  if(loading) return <h1 data-cy="loading"> Loading... </h1>;
+  if(loading) return <h1 data-cy="loading"> {t('loading')} </h1>;
   
   if(error) return(
     <p data-cy="tournaments_error" className="m-2 error" >
@@ -26,7 +29,7 @@ export default function TournamentList() {
     return (
       <> 
         <p className="m-2 flex flex-row items-center" >
-          <span className="flex-1" > There are no tournaments</span>
+          <span className="flex-1" > {t('noTournaments')} </span>
         </p>
         <div>
           {plusSing()}

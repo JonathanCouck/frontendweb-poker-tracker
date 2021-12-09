@@ -4,6 +4,8 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import { useCashgames } from "../contexts/CashgamesProvider";
 import { PlacesContext } from "../contexts/PlacesProvider";
 import { useSession } from "../contexts/AuthProvider";
+import { useTranslation } from 'react-i18next';
+
 import LabelInput from "../components/LabelInput";
 import LabelSelect from "../components/LabelSelect";
 
@@ -40,6 +42,7 @@ const toDateInputString = (date) => {
 export default function CashgameForm() {
   const { id } = useParams();
   const { user } = useSession();
+  const { t } = useTranslation();
   const history = useHistory();
   const methods = useForm();
 
@@ -104,7 +107,7 @@ export default function CashgameForm() {
 
   return (
     <FormProvider {...methods}>
-      <div className="font-semibold m-2">{currentCashgame?.id? "Edit": "Add"} cashgame:</div>
+      <div className="font-semibold m-2">{currentCashgame?.id? t("editCashgame"): t("addCashgame")}:</div>
       <form onSubmit={handleSubmit(onSubmit)} className="m-2">
       <div>
           <LabelInput 
@@ -146,12 +149,12 @@ export default function CashgameForm() {
           <div className="flex">
             <button className="text-black p-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold hover:bg-gray-400" type="submit" data-cy="submit_cashgame">
               {
-                currentCashgame?.id ? "Save cashgame"
-                  : "Add cashgame"
+                currentCashgame?.id ? t("saveCashgame")
+                  : t("addCashgame")
               }
             </button>
             <Link className="text-black button p-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold hover:bg-gray-400" to="/cashgames">
-              Cancel
+              {t("cancel")}
             </Link>
           </div>
         </div>

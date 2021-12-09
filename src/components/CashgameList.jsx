@@ -3,6 +3,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { CashgamesContext } from "../contexts/CashgamesProvider";
 import Cashgame from "./Cashgame";
+import { useTranslation } from "react-i18next";
 
 const plusSing = () => {
   return (
@@ -13,9 +14,10 @@ const plusSing = () => {
 }
 
 export default function CashgameList() {
+  const { t } = useTranslation();
   const { cashgames, error, loading } = useContext(CashgamesContext);
 
-  if(loading) return <h1 data-cy="loading"> Loading... </h1>;
+  if(loading) return <h1 data-cy="loading"> {t("loading")} </h1>;
 
   if(error) return(
     <p data-cy="cashgames_error" className="m-2 error" >
@@ -27,7 +29,7 @@ export default function CashgameList() {
     return (
       <> 
         <p className="m-2 flex flex-row items-center" >
-          <span className="flex-1" > There are no cashgames</span>
+          <span className="flex-1" > {t("noCashgames")} </span>
         </p>
         <div>
           {plusSing()}

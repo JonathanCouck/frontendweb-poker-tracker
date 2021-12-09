@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { NavLink } from "react-router-dom";
 import { useLogout, useSession } from "../contexts/AuthProvider";
+import { useTranslation } from "react-i18next";
 
 const NavItem = ({
   to,
@@ -12,6 +13,7 @@ const NavItem = ({
 ;
 
 export default function NavMenu() {
+  const { t } = useTranslation();
   const { isAuthed } = useSession();
   const logout = useLogout();
 
@@ -24,9 +26,9 @@ export default function NavMenu() {
       {
         isAuthed ? (
           <>
-            <NavItem to="/tournaments" label="Tournaments" />
-            <NavItem to="/cashgames" label="Cashgames" />
-            <NavItem to="/places" label="Places" />
+            <NavItem to="/tournaments" label={t("tournaments")} />
+            <NavItem to="/cashgames" label={t("cashgames")} />
+            <NavItem to="/places" label={t("places")} />
           </>
         ) : null
       }
@@ -34,13 +36,13 @@ export default function NavMenu() {
       {
         !isAuthed ? (
           <>
-            <NavItem to="/" label="Sign in" />
-            <NavItem to="/register" label="Register" />
+            <NavItem to="/" label={t("signIn")} />
+            <NavItem to="/register" label={t("register")} />
           </>
         ) : (
           <>
             <button onClick={handleLogout} className="text-xl text-gray-300 p-2 pl-5 pr-5 font-semibold hover:bg-gray-500" >
-              Sign out
+              {t("signOut")}
             </button>
           </>
         )

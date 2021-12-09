@@ -3,12 +3,14 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { Redirect, useHistory } from 'react-router';
 import LabelInput from '../components/LabelInput';
 import { useRegister, useSession } from '../contexts/AuthProvider';
+import { useTranslation } from 'react-i18next';
 
 export default function Register() {
   const history = useHistory();
   const methods = useForm();
   const register = useRegister();
   const { loading, error, isAuthed } = useSession();
+  const { t } = useTranslation();
   const {
     handleSubmit,
     getValues,
@@ -58,7 +60,7 @@ export default function Register() {
       validate: {
         notIdentical: value => {
           const password = getValues('password');
-          return password === value ? null : 'Both passwords need to be identical';
+          return password === value ? null : t("samePassword");
         }
       }
     }
@@ -71,7 +73,7 @@ export default function Register() {
   return (
     <FormProvider {...methods}>
       <div className="w-96">
-        <h1 className="m-3 font-semibold">Register</h1>
+        <h1 className="m-3 font-semibold">{t("register")}</h1>
         <form onSubmit={handleSubmit(handleRegister)}  className="bg-blue-200 m-5 pt-1 pb-1 pl-2 pr-2 border-2 border-blue-600 rounded-md text-black">
           {
             error ? (
@@ -119,7 +121,7 @@ export default function Register() {
           
           <div className="flex flex-row justify-end p-2">
             <button type="submit" disabled={loading} className="pr-2 pl-2 m-1 font-semibold border-2 bg-gray-200 border-gray-400 hover:bg-gray-400 disabled:opacity-50">
-              Register
+              {t("register")}
             </button>
           </div>
         </form>

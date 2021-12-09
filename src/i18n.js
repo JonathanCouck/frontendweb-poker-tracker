@@ -7,16 +7,110 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
-      "Sign in": "Sign in",
-      "username": "username",
-      "password": "password",
+      //navigation
+      "signIn": "Sign in",
+      "signOut": "Sign out",
+      "register": "Register",
+      "tournaments": "Tournaments",
+      "tournament": "Tournament",
+      "editTournament": "Edit tournament",
+      "addTournament": "Add tournament",
+      "saveTournament": "Save tournament",
+      "cashgames": "Cashgames",
+      "cashgames": "Cashgame",
+      "editCashgame": "Edit cashgame",
+      "addCashgame": "Add cashgame",
+      "saveCashgame": "Save cashgame",
+      "places": "Places",
+
+      //form
+      "entrants": "Entrants",
+      "finished": "Finished",
+      "buyin": "Buyin",
+      "cashed": "Cashed",
+      "inFor": "In for",
+      "outFor": "Out for",
+      "smallBlind": "Small blind",
+      "bigBlind": "Big blind",
+
+      //place
+      "country": "Country",
+      "postalCode": "Postal code",
+      "city": "City",
+      "street": "Street",
+      "houseNumber": "House number",
+
+      //other
+      "username": "Username",
+      "password": "Password",
+      "date": "Date",
+      "place": "Place",
+      "search": "Search",
+      "loading": "Loading...",
+      "cancel": "Cancel",
+
+      //error
+      "noCashgames": "There are no cashgames!",
+      "noTournaments": "There are no tournaments!",
+      "noPlaces": "There are no places!",
+      "noPlacesFilter": "There are no places with this filter!",
+      "samePassword": "Both passwords need to be identical!",
+      "loginFailed": "Login failed, try again!",
+      "registerFailed": "Registration failed, try again!",
     }
   },
   nl: {
     translation: {
-      "Sign in": "Inloggen",
-      "username": "gebruikersnaam",
-      "password": "paswoord",
+      //navigation
+      "signIn": "Inloggen",
+      "signOut": "Uitloggen",
+      "register": "Registreren",
+      "tournaments": "Toernooien",
+      "tournament": "Toernooi",
+      "editTournament": "Toernooi aanpassen",
+      "addTournament": "Toernooi toevoegen",
+      "saveTournament": "Toernooi opslaan",
+      "cashgames": "Cashgames",
+      "cashgame": "Cashgame",
+      "editCashgame": "Cashgame aanpassen",
+      "addCashgame": "Cashgame toevoegen",
+      "saveCashgame": "Cashgame opslaan",
+      "places": "Plaatsen",
+      
+      //form
+      "entrants": "Deelnemers",
+      "finished": "Geëindigd",
+      "buyin": "Inkoop",
+      "cashed": "Winst",
+      "inFor": "In voor",
+      "outFor": "Uit voor",
+      "smallBlind": "Small blind",
+      "bigBlind": "Big blind",
+
+      //place
+      "country": "Land",
+      "postalCode": "Postcode",
+      "city": "Stad",
+      "street": "Straat",
+      "houseNumber": "Huis nummer",
+
+      //other
+      "username": "Gebruikersnaam",
+      "password": "Wachtwoord",
+      "date": "Datum",
+      "place": "Plaats",
+      "search": "Zoeken",
+      "loading": "Laden...",
+      "cancel": "Annuleer",
+
+      //error
+      "noCashgames": "Er zijn geen cashgames!",
+      "noTournaments": "Er zijn geen toernooien!",
+      "noPlaces": "Er zijn geen plaatsen!",
+      "noPlacesFilter": "Er zijn geen plaatsen met deze filter!",
+      "samePassword": "Beide wachtwoorden moeten gelijk zijn!",
+      "loginFailed": "Login mislukt, probeer opnieuw!",
+      "registerFailed": "Registratie mislukt, probeer opnieuw!",
     }
   }
 };

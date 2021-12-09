@@ -4,6 +4,7 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import { useTournaments } from "../contexts/TournamentsProvider";
 import { PlacesContext } from "../contexts/PlacesProvider";
 import { useSession } from "../contexts/AuthProvider";
+import { useTranslation } from 'react-i18next';
 import LabelInput from "../components/LabelInput";
 import LabelSelect from "../components/LabelSelect";
 
@@ -40,6 +41,7 @@ const toDateInputString = (date) => {
 export default function TournamentForm() {
   const { id } = useParams();
   const { user } = useSession();
+  const { t } = useTranslation();
   const history = useHistory();
   const methods = useForm();
 
@@ -103,7 +105,7 @@ export default function TournamentForm() {
 
   return (
     <FormProvider {...methods} >
-      <div className="font-semibold m-2">{currentTournament?.id? "Edit": "Add"} tournament:</div>
+      <div className="font-semibold m-2">{currentTournament?.id? t("editTournament"): t("addTournament")}:</div>
       <form onSubmit={handleSubmit(onSubmit)} className="m-2">
         <div>
           <LabelInput 
@@ -145,12 +147,12 @@ export default function TournamentForm() {
           <div className="flex">
             <button className="text-black p-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold hover:bg-gray-400" type="submit" data-cy="submit_tournament">
               {
-                currentTournament?.id ? "Save tournament"
-                  : "Add tournament"
+                currentTournament?.id ? t("saveTournament")
+                  : t("addTournament")
               }
             </button>
             <Link className="text-black button p-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold hover:bg-gray-400" to="/tournaments">
-              Cancel
+              {t("cancel")}
             </Link>
           </div>
         </div>
