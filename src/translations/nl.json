@@ -39,5 +39,6 @@
   "noPlacesFilter": "Er zijn geen plaatsen met deze filter!",
   "samePassword": "Beide wachtwoorden moeten gelijk zijn!",
   "loginFailed": "Login mislukt, probeer opnieuw!",
-  "registerFailed": "Registratie mislukt, probeer opnieuw!"
+  "registerFailed": "Registratie mislukt, probeer opnieuw!",
+  "chooseA": "Kies een"
 }

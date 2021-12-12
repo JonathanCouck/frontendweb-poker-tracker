@@ -39,5 +39,6 @@
   "noPlacesFilter": "There are no places with this filter!",
   "samePassword": "Both passwords need to be identical!",
   "loginFailed": "Login failed, try again!",
-  "registerFailed": "Registration failed, try again!"
+  "registerFailed": "Registration failed, try again!",
+  "chooseA": "Choose a"
 }

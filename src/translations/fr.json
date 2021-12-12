@@ -39,5 +39,6 @@
   "noPlacesFilter": "Il n'y a pas d'endroits avec cette filtre!",
   "samePassword": "Les deux mots de passe doivent être identiques!",
   "loginFailed": "La connexion a échoué, réessayez!",
-  "registerFailed": "L'enregistrement a échoué, réessayez!"
+  "registerFailed": "L'enregistrement a échoué, réessayez!",
+  "chooseA": "Choisi un"
 }
