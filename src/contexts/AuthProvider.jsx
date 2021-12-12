@@ -67,7 +67,7 @@ export const AuthProvider = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [token, setToken] = useState(localStorage.getItem(JWT_TOKEN_KEY));
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
 
   const setSession = useCallback( async (token, user) => {
     const { exp, userId } = parseJwt(token);
@@ -80,7 +80,7 @@ export const AuthProvider = ({
       localStorage.removeItem(JWT_TOKEN_KEY);
       token = null;
     }
-
+    
     api.setAuthToken(token);
     setToken(token);
     setReady(token && stillValid);

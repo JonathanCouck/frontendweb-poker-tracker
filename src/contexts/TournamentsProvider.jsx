@@ -21,7 +21,6 @@ export const TournamentsProvider = ({
   const [loading, setLoading] = useState(false);
   const [initialLoad, setInitialLoad] = useState(false);
   const [currentTournament, setCurrentTournament] = useState({});
-  
   const refreshTournaments = useCallback(async () => {
     try {
       setError();
@@ -71,7 +70,7 @@ export const TournamentsProvider = ({
     } finally {
       setLoading(false);
     }
-  }, [refreshTournaments]);
+  }, [refreshTournaments, user]);
 
   const deleteTournament = useCallback(async(id) => {
     try {

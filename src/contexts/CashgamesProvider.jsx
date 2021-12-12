@@ -71,7 +71,7 @@ export const CashgamesProvider = ({
     } finally {
       setLoading(false);
     }
-  }, [refreshCashgames]);
+  }, [refreshCashgames, user]);
 
   const deleteCashgame = useCallback(async(id) => {
     try {

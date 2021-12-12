@@ -2,14 +2,15 @@ import { axios } from '.';
 
 
 export const getCashgames = async () => {
-  const { data } = await axios.get(
-    `cashgames/`,
-    {
-      params: {
-        limit: 25,
-        offset: 0,
-      }
+  const id = "38fb2aac-544f-47a5-8658-6273936a9a2b";
+  const { data } = await axios({
+    method: 'get',
+    url: `cashgames/user/${id}`,
+    params: {
+      limit: 25,
+      offset: 0,
     }
+  }
   );
   return data;
 }
@@ -42,5 +43,7 @@ export const saveCashgames = async ({
 }
 
 export const deleteCashgames = async (id) => {
-  await axios.delete(`cashgames/${id}`);
+  if (confirm("Do you want to delete this Cashgame?")) {
+    await axios.delete(`cashgames/${id}`);
+  }
 }

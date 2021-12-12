@@ -13,7 +13,7 @@ const LabelSelect = ({label, options, validation, ...rest}) => {
         {...rest}
         id={label}
         name={label}>
-        <option value="">--choose a {label}--</option>
+        <option value="">--{t('chooseA')} {t(label)}--</option>
         {options.map((value) => (
           <option key={value.id} value={value.id}>
             {value.name}
