@@ -1,14 +1,14 @@
 import { axios } from '.';
 
 
-export const getCashgames = async () => {
+export const getCashgames = async (limit=12, offset=0) => {
   const id = "38fb2aac-544f-47a5-8658-6273936a9a2b";
   const { data } = await axios({
     method: 'get',
     url: `cashgames/user/${id}`,
     params: {
-      limit: 25,
-      offset: 0,
+      limit,
+      offset,
     }
   }
   );

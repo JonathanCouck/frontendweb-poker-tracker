@@ -1187,10 +1187,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
-"@cypress/request@^2.88.7":
-  version "2.88.9"
-  resolved "https://registry.yarnpkg.com/@cypress/request/-/request-2.88.9.tgz#7428fc66008ec3a4727c189857f6bb7f758f1d92"
-  integrity sha512-6md3dtAd3DXfTEXFb2Yde3TSaqpYsSBw3a1VFwAC9Fscu2B0DtY2Venu35csZyJj09XNkPMGRoE4ZXUdtkI+zg==
+"@cypress/request@^2.88.6":
+  version "2.88.10"
+  resolved "https://registry.yarnpkg.com/@cypress/request/-/request-2.88.10.tgz#b66d76b07f860d3a4b8d7a0604d020c662752cce"
+  integrity sha512-Zp7F+R93N0yZyG34GutyTNr+okam7s/Fzc1+i3kcqOP8vk6OuajuE9qZJ6Rs+10/1JFtXFYMdyarnU1rZuJesg==
   dependencies:
     aws-sign2 "~0.7.0"
     aws4 "^1.8.0"
@@ -1199,7 +1199,6 @@
     extend "~3.0.2"
     forever-agent "~0.6.1"
     form-data "~2.3.2"
-    har-validator "~5.1.3"
     http-signature "~1.3.6"
     is-typedarray "~1.0.0"
     isstream "~0.1.2"
@@ -2918,7 +2917,7 @@ blob-util@^2.0.2:
   resolved "https://registry.yarnpkg.com/blob-util/-/blob-util-2.0.2.tgz#3b4e3c281111bb7f11128518006cdc60b403a1eb"
   integrity sha512-T7JQa+zsXXEa6/8ZhHcQEW1UFfVM49Ts65uBkFL6fz2QmrElqmbajIDJvuA0tEhRe5eIjpV9ZF+0RfZR9voJFQ==
 
-bluebird@3.7.2, bluebird@^3.5.5:
+bluebird@^3.5.5, bluebird@^3.7.2:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
@@ -4135,19 +4134,19 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-cypress@^9.1.0:
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/cypress/-/cypress-9.1.0.tgz#5d23c1b363b7d4853009c74a422a083a8ad2601c"
-  integrity sha512-fyXcCN51vixkPrz/vO/Qy6WL3hKYJzCQFeWofOpGOFewVVXrGfmfSOGFntXpzWBXsIwPn3wzW0HOFw51jZajNQ==
+cypress@^8.6.0:
+  version "8.7.0"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-8.7.0.tgz#2ee371f383d8f233d3425b6cc26ddeec2668b6da"
+  integrity sha512-b1bMC3VQydC6sXzBMFnSqcvwc9dTZMgcaOzT0vpSD+Gq1yFc+72JDWi55sfUK5eIeNLAtWOGy1NNb6UlhMvB+Q==
   dependencies:
-    "@cypress/request" "^2.88.7"
+    "@cypress/request" "^2.88.6"
     "@cypress/xvfb" "^1.2.4"
     "@types/node" "^14.14.31"
     "@types/sinonjs__fake-timers" "^6.0.2"
     "@types/sizzle" "^2.3.2"
     arch "^2.2.0"
     blob-util "^2.0.2"
-    bluebird "3.7.2"
+    bluebird "^3.7.2"
     cachedir "^2.3.0"
     chalk "^4.1.0"
     check-more-types "^2.24.0"
@@ -4175,6 +4174,7 @@ cypress@^9.1.0:
     ospath "^1.2.2"
     pretty-bytes "^5.6.0"
     proxy-from-env "1.0.0"
+    ramda "~0.27.1"
     request-progress "^3.0.0"
     supports-color "^8.1.1"
     tmp "~0.2.1"
@@ -5037,11 +5037,6 @@ estree-walker@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-1.0.1.tgz#31bc5d612c96b704106b477e6dd5d8aa138cb700"
   integrity sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==
-
-estree-walker@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-3.0.0.tgz#ca4b284de9dffb255288c76a44870b360faf14f9"
-  integrity sha512-s6ceX0NFiU/vKPiKvFdR83U1Zffu7upwZsGwpoqfg5rbbq1l50WQ5hCeIvM6E6oD4shUHCYMsiFPns4Jk0YfMQ==
 
 esutils@^2.0.2:
   version "2.0.3"
@@ -6126,10 +6121,10 @@ human-signals@^1.1.1:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
   integrity sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==
 
-i18next@^21.5.4:
-  version "21.5.4"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-21.5.4.tgz#55ab39c31cc0b4f9f58c3a599db50c4515698284"
-  integrity sha512-ukwRJpLhYg4EUfCOtbaKjlwF71qyel1XMXQN78OkQMcaQG68UzlYgLC6g2fhoTNBvoH2tJkaaqzDumhC9skAhA==
+i18next@^21.6.0:
+  version "21.6.0"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-21.6.0.tgz#257abf455b24136640a20728b44cf59f60cdeb5c"
+  integrity sha512-RjNuACL35wWZgtkyMcjcCmK7R72u3P6jTNbGKzrvHGI9M0iK5Vn1DsBIwOByppaXLIbe0viJ79Nz2h8w1UwPoQ==
   dependencies:
     "@babel/runtime" "^7.12.0"
 
@@ -9752,6 +9747,11 @@ raf@^3.4.1:
   integrity sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==
   dependencies:
     performance-now "^2.1.0"
+
+ramda@~0.27.1:
+  version "0.27.1"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.27.1.tgz#66fc2df3ef873874ffc2da6aa8984658abacf5c9"
+  integrity sha512-PgIdVpn5y5Yns8vqb8FzBUEYn98V3xcPgawAkkgj0YJ0qDsnHCiNmZYfOGMgOvoB0eWFLpYbhxUR3mxfDIMvpw==
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"

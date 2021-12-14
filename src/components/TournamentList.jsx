@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
+import { IoMdArrowDropleftCircle, IoMdArrowDroprightCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { TournamentsContext } from "../contexts/TournamentsProvider";
 import Tournament from "./Tournament";
@@ -16,7 +17,7 @@ const plusSing = () => {
 
 export default function TournamentList() {
   const { t } = useTranslation();
-  const { tournaments, error, loading } = useContext(TournamentsContext);
+  const { tournaments, page, error, loading } = useContext(TournamentsContext);
   if(loading) return <h1 data-cy="loading"> {t('loading')} </h1>;
   
   if(error) return(
@@ -39,12 +40,20 @@ export default function TournamentList() {
   }
 
   return (
-    <div className="flex text-black flex-wrap" >
-      {tournaments.map(tour => 
-        <Tournament key={tour.id} buyin={tour.buyin} cashed={tour.cashed} entrants={tour.entrants} finished={tour.finished} id={tour.id} place={tour.place.name} date={tour.date} />
-      )}
+    <div>
+      <div className="flex text-black flex-wrap" >
+        {tournaments.map(tour => 
+          <Tournament key={tour.id} buyin={tour.buyin} cashed={tour.cashed} entrants={tour.entrants} finished={tour.finished} id={tour.id} place={tour.place.name} date={tour.date} />
+        )}
 
-      {plusSing()}
+        {plusSing()}
+      </div>
+      
+      <div className="flex">
+        <IoMdArrowDropleftCircle color="#bfdbfe" size={35} />
+        <span className="text-blue-200 m-1 text-lg">{(page+1)}</span>
+        <IoMdArrowDroprightCircle color="#bfdbfe" size={35} />
+      </div>
     </div>
   )
 }

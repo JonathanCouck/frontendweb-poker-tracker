@@ -17,6 +17,7 @@ export const TournamentsProvider = ({
 }) => {
   const { ready: authReady, user } = useSession();
   const [tournaments, setTournaments] = useState([]);
+  const [page, setPage] = useState(0);
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
   const [initialLoad, setInitialLoad] = useState(false);
@@ -25,7 +26,7 @@ export const TournamentsProvider = ({
     try {
       setError();
       setLoading(true);
-      const data = await tournamentsApi.getTournaments();
+      const data = await tournamentsApi.getTournaments(12, page*12);
       setTournaments(data.data);
     } catch(error) {
       setError(error)
@@ -91,9 +92,11 @@ export const TournamentsProvider = ({
 
   const value = useMemo(() => ({
     tournaments,
+    page,
     error,
     loading,
     currentTournament,
+    setPage,
     createOrUpdateTournament,
     deleteTournament,
     setTournamentToUpdate,

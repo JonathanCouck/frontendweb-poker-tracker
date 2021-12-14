@@ -17,6 +17,7 @@ export const CashgamesProvider = ({
 }) => {
   const { ready: authReady, user } = useSession();
   const [cashgames, setCashgames] = useState([]);
+  const [page, setPage] = useState(0);
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
   const [initialLoad, setInitialLoad] = useState(false);
@@ -26,7 +27,7 @@ export const CashgamesProvider = ({
     try {
       setError();
       setLoading(true);
-      const data = await cashgamesApi.getCashgames();
+      const data = await cashgamesApi.getCashgames(12, page*12);
       setCashgames(data.data);
     } catch(error) {
       setError(error)
@@ -92,9 +93,11 @@ export const CashgamesProvider = ({
 
   const value = useMemo(() => ({
     cashgames,
+    page,
     error,
     loading,
     currentCashgame,
+    setPage,
     createOrUpdateCashgame,
     deleteCashgame,
     setCashgameToUpdate,
