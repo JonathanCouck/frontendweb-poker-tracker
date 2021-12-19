@@ -16,15 +16,7 @@ describe("places test", () => {
   });
 
   it("very slow response", () => {
-    cy.intercept(
-      "http://localhost:9000/api/places",
-      (req) => {
-        req.on("response", (res) => {
-          res.setDelay(1000);
-        });
-      }
-    ).as("slowResponse");
-    cy.visit("http://localhost:3000/places");
+    3
     cy.get("[data-cy=loading]").should("be.visible");
     cy.wait("@slowResponse");
     cy.get("[data-cy=loading]").should("not.exist");

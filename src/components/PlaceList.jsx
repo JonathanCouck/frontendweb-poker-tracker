@@ -42,7 +42,7 @@ export default function PlaceList({ search }) {
   }
 
   return (
-    <div className="flex flex-wrap" >
+    <div data-cy="places" className="flex flex-wrap" >
       {filteredPlaces.map(p => <Place key={p.id} {...p} />)}
     </div>
   )
