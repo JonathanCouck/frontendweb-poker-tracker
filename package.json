@@ -1,7 +1,8 @@
 {
-  "name": "frontend-myapp",
+  "name": "frontend-poker",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jonathancouck.github.io/frontendweb-thomas-2122-JonathanCouck",
   "dependencies": {
     "@craco/craco": "^6.4.0",
     "@testing-library/jest-dom": "^5.11.4",
