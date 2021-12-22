@@ -17,7 +17,7 @@ const validationRules = {
   },
   finished: {
     required: "this is required",
-    min: { value: 2, message: "min 2"},
+    min: { value: 1, message: "min 1"},
   },
   buyin: {
     required: "this is required",

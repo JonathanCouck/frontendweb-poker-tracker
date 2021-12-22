@@ -1,0 +1,34 @@
+{
+	"data":
+	[
+		{
+			"id": "efabb1ef-6944-484e-a084-f3cbd26babd2",
+			"buyin": 20,
+			"cashed": 257,
+      "entrants": 57,
+      "finished": 2,
+			"userId": "38fb2aac-544f-47a5-8658-6273936a9a2b",
+			"place":
+			{
+				"id":"a521ea17-81a0-462c-946d-177292d57617",
+				"name":"Grand Casino de Namur"
+			},
+      "date": "17/08/2021"
+		},
+		{
+			"id": "38fb2aac-544f-47a5-8658-6273936a9a2b",
+			"buyin": 20,
+			"cashed": 0,
+      "entrants": 67,
+      "finished": 12,
+			"userId": "38fb2aac-544f-47a5-8658-6273936a9a2b",
+			"place":
+			{
+				"id":"77e7e385-610a-4d7f-a203-92166de7d946",
+				"name":"Pokahnights"
+			},
+      "date": "05/09/2021"
+		}
+	],
+	"count":2
+}
