@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 
 const plusSing = () => {
   return (
-    <Link to="tournaments/add" className="button" >
+    <Link to="tournaments/add" className="button" data-cy="add_tournament">
       <AiOutlinePlus color="black" size={35} className="border-2 border-blue-600 rounded-md bg-blue-200 m-1 hover:bg-blue-600 cursor-pointer rounded-lg" />
     </Link>
   )

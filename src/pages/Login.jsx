@@ -42,7 +42,7 @@ export default function Login() {
         <form onSubmit={handleSubmit(handleLogin)} className="bg-blue-200 m-5 pt-1 pl-2 pr-2 border-2 border-blue-600 rounded-md text-black">
           {
             error ? (
-              <p className="text-red-600">
+              <p className="text-red-600" data-cy="login_error">
                 {error}
               </p>
             ) : null
@@ -60,7 +60,7 @@ export default function Login() {
             type="password"
             defaultValue=""
             data-cy="password_input"
-            placeholder=""
+            placeholder="********"
             validation={validationRules.password} />
 
           <div className="flex flex-row justify-end p-2">

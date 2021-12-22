@@ -7,4 +7,9 @@ describe("tests", () => {
 	it("should login", () => {
 		cy.login('Juanathan', 'password');
 	});
+
+	it("should not login", () => {
+		cy.login('NotRight', 'password');
+		cy.get("[data-cy=login_error]").contains("Login failed, try again!");
+	});
 });

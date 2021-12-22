@@ -1,0 +1,24 @@
+{
+	"data":
+	[
+    {
+      "id": "77e7e385-610a-4d7f-a203-92166de7d946", 
+      "name": "Pokahnights", 
+      "country": "Belgium", 
+      "city": "Antwerpen", 
+      "postalCode": 2610, 
+      "street": "Boomsesteenweg", 
+      "houseNumber": 440
+    },
+    {
+      "id": "a521ea17-81a0-462c-946d-177292d57617", 
+      "name": "Grand Casino de Namur", 
+      "country": "Belgium", 
+      "city": "Namur", 
+      "postalCode":5000, 
+      "street": "Avenue Baron de Moreau", 
+      "houseNumber": 1
+    }
+  ],
+  "count": 2
+}

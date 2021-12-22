@@ -16,8 +16,8 @@ describe("add tournament form", () => {
       .should("contain", "this is required");
   });
 
-  it("add tournament ", () => {
-    cy.visit("http://localhost:3000/tournaments/add");
+  it("add tournament", () => {
+    cy.get("[data-cy=add_tournament]").click();
 
     cy.get("[data-cy=date_input]").type("2020-01-01");
     cy.get("[data-cy=entrants_input]").type("20");
@@ -27,13 +27,15 @@ describe("add tournament form", () => {
     cy.get("[data-cy=place_input]").select("Pokahnights");
     cy.get("[data-cy=submit_tournament]").click();
 
-    cy.get("[data-cy=tournament_date]").eq(3).contains("01/01/2020");
-    cy.get("[data-cy=tournament_place]").each((el, idx) => {
-      if (idx === 3) {
-        expect(el[0].textContent).to.equal("Pokahnights");
-      }
-    });
+    cy.intercept(
+      "GET",
+      "http://localhost:9000/api/tournaments",
+      { fixture: "tournaments.json" }
+    );
+
     cy.get("[data-cy=tournament]").should("have.length", 3);
+    cy.get("[data-cy=tournament_date]").eq(0).contains("01/01/2020");
+    cy.get("[data-cy=tournament_place]").eq(0).contains("Pokahnights");
   });
 
   it("remove again", () => {
@@ -43,7 +45,7 @@ describe("add tournament form", () => {
       { fixture: "tournaments.json" }
     );
 
-    cy.get("[data-cy=tournament_remove_btn").eq(2).click();
-    cy.get("[data-cy=tournament]").should("have.length", 2);
+    cy.get("[data-cy=tournament_remove_btn").eq(0).click();
+    cy.get("[data-cy=tournament]").should("have.length", 1);
   });
 });
