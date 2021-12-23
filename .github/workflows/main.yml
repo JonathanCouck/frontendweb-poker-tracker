@@ -10,7 +10,7 @@ jobs:
    build:
     runs-on: ubuntu-latest
     env:
-        REACT_APP_BACKEND_BASE_URL: XxX
+        REACT_APP_BACKEND_BASE_URL: https://jc-poker-api.herokuapp.com/api/
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
