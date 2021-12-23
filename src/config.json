@@ -1,4 +1,4 @@
 {
-  "base_url":"http://localhost:9000/api/",
+  "base_url":"https://jc-poker-api.herokuapp.com/api/",
   "token_key": "auth_token"
 }
