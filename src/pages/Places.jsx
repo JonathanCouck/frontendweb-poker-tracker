@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import PlaceList from "../components/PlaceList";
+import PlaceList from "../components2/PlaceList";
 import { useTranslation } from "react-i18next";
 
 export default function Places() {

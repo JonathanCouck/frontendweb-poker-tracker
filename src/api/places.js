@@ -12,6 +12,7 @@ export const savePlace = async ({
   id,
   name, 
   country, 
+  city,
   website,
 }) => {
   const {
@@ -22,6 +23,7 @@ export const savePlace = async ({
     data: {
       name, 
       country, 
+      city,
       website,
     },
   });

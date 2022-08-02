@@ -45,13 +45,13 @@ export const PlacesProvider = ({
   }, [authReady, initialLoad, refreshPlaces]);
 
   const createOrUpdatePlace = useCallback(async ({
-    id, name, country, website
+    id, name, country, city, website
   }) => {
     try {
       setError();
       setLoading(true);
       const changedPlace = await placesApi.savePlace({
-        id, name, country, website
+        id, name, country,city, website
       });
       await refreshPlaces();
       return changedPlace;

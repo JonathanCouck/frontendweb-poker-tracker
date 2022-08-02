@@ -9,6 +9,7 @@ import LabelInput from "../components/LabelInput";
 const validationRules = {
   name: { required: "this is required" },
   country: { required: "this is required" },
+  city: { required: "this is required" },
   website: { required: "this is required" },
 }
 
@@ -25,6 +26,7 @@ const PlaceForm = () => {
     if(currentPlace) {
       setValue('name', currentPlace.name);
       setValue('country', currentPlace.country);
+      setValue('city', currentPlace.city);
       setValue('website', currentPlace.website);
     }
   })
@@ -35,6 +37,7 @@ const PlaceForm = () => {
         id: currentPlace?.id,
         name: data.name,
         country: data.country,
+        city: data.city,
         website: data.website,
       });
       setPlaceToUpdate(null);
@@ -57,6 +60,11 @@ const PlaceForm = () => {
           type="text"
           data-cy="country_input"
           validation={validationRules.country} />
+        <LabelInput
+          label="city"
+          type="text"
+          data-cy="city_input"
+          validation={validationRules.city} />
         <LabelInput
           label="website"
           type="text"

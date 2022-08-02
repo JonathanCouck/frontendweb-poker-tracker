@@ -6,7 +6,7 @@ import { PlacesContext } from "../contexts/PlacesProvider";
 
 import React from 'react'
 
-const Place = ({ index, id, name, country, website }) => {
+const Place = ({ index, id, name, country, city, website }) => {
   const history = useHistory();
   const { deletePlace, setPlaceToUpdate, currentPlace } = useContext(PlacesContext);
 
@@ -26,6 +26,7 @@ const Place = ({ index, id, name, country, website }) => {
         <td data-cy="place_index"><div className="m-2">{index}</div></td>
         <td data-cy="place_name"> <a className="m-2" href={website} target="_blank">{name}</a></td>
         <td data-cy="place_country"><div className="m-2">{country}</div></td>
+        <td data-cy="place_city"><div className="m-2">{city}</div></td>
         <td className="flex m-2">
           <button data-cy="game_edit_btn" onClick={handleUpdate}>
             <AiFillEdit size={22} color="black" title="edit" />
@@ -54,8 +55,9 @@ export default function PlaceList({ search }) {
         <thead className="bg-gray-200">
           <tr>
             <th className="w-12"><div className="m-2">#</div></th>
-            <th className="w-60"><div className="m-2">name (click for website)</div></th>
-            <th className="w-40"><div className="m-2">country</div></th>
+            <th className="w-60"><div className="m-2">Name (click for website)</div></th>
+            <th className="w-40"><div className="m-2">Country</div></th>
+            <th className="w-40"><div className="m-2">City</div></th>
             <th/>
           </tr>
         </thead>
