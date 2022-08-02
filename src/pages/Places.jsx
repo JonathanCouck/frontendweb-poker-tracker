@@ -12,25 +12,24 @@ export default function Places() {
   const handleSearch = useCallback(() => setSearch(text), [text]);
 
   return (
-    <>
-      <h1 className="m-2 text-lg font-semibold"> {t("places")}: </h1>
-      <div className="m-2">
+    <div className="m-5">
+      <h1 className="font-semibold text-2xl">Places</h1>
+      <div className="m-5">
         <input 
           data-cy="places_search_input"
           type="search"
           value={text}
           onChange={handleInputChange}
-          placeholder={t("search")}
-          className="text-black p-1"
+          placeholder='Search'
+          className="text-black p-1 rounded-md"
         />
-        <button type="button" data-cy="tournaments_search_btn" className="pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold text-black hover:bg-gray-400" onClick={handleSearch}>
-          {t("search")}
+        <button type="button" data-cy="tournaments_search_btn" className="pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 rounded-md font-semibold text-black hover:bg-gray-400" onClick={handleSearch}>
+          Search
         </button>
       </div>
 
-      <div>
-        <PlaceList search={search} />
-      </div>
-    </>
+      <PlaceList search={search} />
+
+    </div>
   );
 }

@@ -104,7 +104,7 @@ export const AuthProvider = ({
       return true;
     } catch(err) {
       console.error(err);
-      setError(t('loginFailed'));
+      setError('Login failed');
     } finally {
       setLoading(false);
     }
@@ -114,17 +114,17 @@ export const AuthProvider = ({
     setSession(null)
   }, [setSession]);
 
-  const register = useCallback( async( username, password, birthDate, firstName, lastName ) => {
+  const register = useCallback( async( username, password ) => {
     try {
       setLoading(true);
       setError(null);
-      const { token, user } = await usersApi.register({username, password, birthDate, firstName, lastName});
+      const { token, user } = await usersApi.register({username, password});
       setUser(user);
       setSession(token);
       return true;
     } catch (err) {
       console.error(err);
-      setError(t('registerFailed'));
+      setError('Register failed');
       return false;
     } finally {
       setLoading(false);

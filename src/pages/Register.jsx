@@ -1,131 +1,20 @@
-import { useCallback, useMemo } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
-import { Redirect, useHistory } from 'react-router';
-import LabelInput from '../components/LabelInput';
+import { useHistory } from 'react-router';
 import { useRegister, useSession } from '../contexts/AuthProvider';
-import { useTranslation } from 'react-i18next';
+
+import RegisterForm from '../components2/RegisterForm'
 
 export default function Register() {
-  const history = useHistory();
-  const methods = useForm();
-  const register = useRegister();
-  const { loading, error, isAuthed } = useSession();
-  const { t } = useTranslation();
-  const {
-    handleSubmit,
-    getValues,
-  } = methods;
-
-  const toDateInputString = (date) => {
-    if(!date) return null;
-    if(typeof date !== Object) {
-      date = new Date(date);
-    }
-    const asString = date.toISOString();
-    return asString.substring(0, asString.indexOf("T"));
-  }
-
-  const handleRegister = useCallback( async({
-    firstName, 
-    lastName, 
-    username,
-    password,
-    birthDate,
-  }) => {
-    const success = await register(username, password, birthDate, firstName, lastName);
-
-    if(success) {
-      history.replace('/');
-    }
-  }, [history, register]);
-
-  const validationRules = useMemo(() => ({
-    firstName: {
-      required: true
-    },
-    lastName: {
-      required: true
-    },
-    username: {
-      required: true
-    },
-    birthDate: {
-      required:true
-    },
-    password: {
-      required: true
-    },
-    confirmPassword: {
-      required: true,
-      validate: {
-        notIdentical: value => {
-          const password = getValues('password');
-          return password === value ? null : t("samePassword");
-        }
-      }
-    }
-  }), [getValues]);
+  const { isAuthed } = useSession();
 
   if (isAuthed) {
-    return <Redirect from="/register" to="/tournaments" />
+    return <Redirect from="/register" to="/games" />
   }
 
   return (
-    <FormProvider {...methods}>
-      <div className="w-96">
-        <h1 className="m-3 font-semibold">{t("register")}</h1>
-        <form onSubmit={handleSubmit(handleRegister)}  className="bg-blue-200 m-5 pt-1 pb-1 pl-2 pr-2 border-2 border-blue-600 rounded-md text-black">
-          {
-            error ? (
-              <p className="text-red-600">
-                {error}
-              </p>
-            ) : null
-          }
-          <LabelInput
-            label="username"
-            type="text"
-            defaultValue=""
-            placeholder="Username123"
-            validation={validationRules.username}/>
-          <LabelInput
-            label="firstName"
-            type="text"
-            defaultValue=""
-            placeholder="First"
-            validation={validationRules.firstName} />
-          <LabelInput
-            label="lastName"
-            type="text"
-            defaultValue=""
-            placeholder="Last"
-            validation={validationRules.lastName} />
-          <LabelInput 
-            label="birthDate"
-            type="date"
-            defaultValue={toDateInputString(new Date())}
-            validation={validationRules.birthDate}
-            data-cy="date_input" />
-          <LabelInput
-            label="password"
-            type="password"
-            defaultValue=""
-            placeholder=""
-            validation={validationRules.password} />
-          <LabelInput
-            label="confirmPassword"
-            type="password"
-            defaultValue=""
-            placeholder=""
-            validation={validationRules.confirmPassword} />
-          
-          <div className="flex flex-row justify-end p-2">
-            <button type="submit" disabled={loading} className="pr-2 pl-2 m-1 font-semibold border-2 bg-gray-200 border-gray-400 hover:bg-gray-400 disabled:opacity-50">
-              {t("register")}
-            </button>
-          </div>
-        </form>
-      </div>
-    </FormProvider>
+    <div className="m-5">
+      <h1 className="font-semibold text-2xl mb-5">Register</h1>
+
+      <RegisterForm />
+    </div>
   );
 }

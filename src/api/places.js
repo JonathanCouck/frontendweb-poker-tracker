@@ -12,10 +12,7 @@ export const savePlace = async ({
   id,
   name, 
   country, 
-  city, 
-  postal_code, 
-  street, 
-  house_number
+  website,
 }) => {
   const {
     data
@@ -25,10 +22,7 @@ export const savePlace = async ({
     data: {
       name, 
       country, 
-      city, 
-      postal_code, 
-      street, 
-      house_number
+      website,
     },
   });
     return data;

@@ -5,64 +5,48 @@ import {
   Route,
 } from "react-router-dom";
 
-import { TournamentsProvider } from "./contexts/TournamentsProvider";
-import { CashgamesProvider } from "./contexts/CashgamesProvider";
+import { GamesProvider } from "./contexts/GamesProvider";
 import { PlacesProvider } from "./contexts/PlacesProvider";
 import { AuthProvider } from "./contexts/AuthProvider";
 
 import NavMenu from "./components/NavMenu";
 import PrivateRoute from "./components/PrivateRoute";
 import Places from "./pages/Places";
-import Cashgames from "./pages/Cashgames";
-import Tournaments from "./pages/Tournaments";
+import PlaceEditor from './pages/PlaceEditor';
+import Games from "./pages/Games";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import TournamentForm from "./pages/TournamentForm";
-import CashgameForm from "./pages/CashgameForm";
 
 function App() {
   return (
     <AuthProvider>
       <PlacesProvider>
-        <TournamentsProvider>
-          <CashgamesProvider>
-            <Router>
-              <NavMenu />
-              <Switch>
+        <GamesProvider>
+          <Router>
+            <NavMenu />
+            <Switch>
+              <Route path="/" exact>
+                <Login />
+              </Route>
+              <Route path="/register" exact>
+                <Register />
+              </Route>
 
-                <Route path="/" exact>
-                  <Login />
-                </Route>
-                <Route path="/register" exact>
-                  <Register />
-                </Route>
-
-                <PrivateRoute path="/tournaments" exact>
-                  <Tournaments />
-                </PrivateRoute>
-                <PrivateRoute path="/tournaments/add" exact> 
-                  <TournamentForm />
-                </PrivateRoute>
-                <PrivateRoute path="/tournaments/edit/:id" exact> 
-                  <TournamentForm />
-                </PrivateRoute>
-                <PrivateRoute path="/cashgames" exact>
-                  <Cashgames />
-                </PrivateRoute>
-                <PrivateRoute path="/cashgames/add" exact> 
-                  <CashgameForm />
-                </PrivateRoute>
-                <PrivateRoute path="/cashgames/edit/:id" exact> 
-                  <CashgameForm />
-                </PrivateRoute>
-                <PrivateRoute path="/places" exact>
-                  <Places />
-                </PrivateRoute>
-                
-              </Switch>
-            </Router>
-          </CashgamesProvider>
-        </TournamentsProvider>
+              <PrivateRoute path="/games" exact>
+                <Games />
+              </PrivateRoute>
+              <PrivateRoute path="/places" exact>
+                <Places />
+              </PrivateRoute>
+              <PrivateRoute path="/places/add" exact>
+                <PlaceEditor />
+              </PrivateRoute>
+              <PrivateRoute path="/places/edit/:id" exact>
+                <PlaceEditor />
+              </PrivateRoute>
+            </Switch>
+          </Router>
+        </GamesProvider>
       </PlacesProvider>
     </AuthProvider>
   )

@@ -1,11 +1,9 @@
 import { axios } from '.';
 
-
-export const getCashgames = async (limit=12, offset=0) => {
-  const id = "38fb2aac-544f-47a5-8658-6273936a9a2b";
+export const getGames = async (id, limit=12, offset=0) => {
   const { data } = await axios({
     method: 'get',
-    url: `cashgames/user/${id}`,
+    url: `games/user/${id}`,
     params: {
       limit,
       offset,
@@ -15,7 +13,7 @@ export const getCashgames = async (limit=12, offset=0) => {
   return data;
 }
 
-export const saveCashgames = async ({
+export const saveGames = async ({
   id,
   userId,
   placeId,
@@ -27,7 +25,7 @@ export const saveCashgames = async ({
 }) => {
   const { data } = await axios ({
     method: id? 'put': 'post',
-    url: `cashgames/${id ?? ''}`,
+    url: `games/${id ?? ''}`,
     data: {
       bigBlind, 
       smallBlind, 
@@ -42,8 +40,8 @@ export const saveCashgames = async ({
   return data;
 }
 
-export const deleteCashgames = async (id) => {
-  if (confirm("Do you want to delete this Cashgame?")) {
-    await axios.delete(`cashgames/${id}`);
+export const deleteGames = async (id) => {
+  if (confirm("Do you want to delete this Game?")) {
+    await axios.delete(`games/${id}`);
   }
 }
