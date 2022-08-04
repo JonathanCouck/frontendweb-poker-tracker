@@ -1,0 +1,89 @@
+{
+  "NavMenu": {
+    "logIn": "Log in",
+    "register": "Register",
+    "games": "Games",
+    "places": "Places",
+    "logOut": "Log out"
+  },
+  "Form": {
+    "choose": "Choose a",
+    "username": "Username",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "place": "Place",
+    "type": "Type",
+    "inFor": "In for (€)",
+    "outFor": "Out for (€)",
+    "par1": "Small Blind (CASH) / Finished (TOUR)",
+    "par2": "Big Blind (CASH) / Entrants (TOUR)",
+    "date": "Date",
+    "name": "Name",
+    "city": "City",
+    "country":"Country",
+    "website": "Website"
+  },
+  "Login": {
+    "logIn": "Log in",
+    "continue": "Continue"
+  },
+  "Register": {
+    "register": "Register",
+    "continue": "Continue"
+  },
+  "Games": {
+    "games": "Games",
+    "sure": "Are you sure you want to delete this game?",
+    "allGames": "All games",
+    "cashgames": "Cashgames",
+    "tournaments": "Tournaments",
+    "date": "Date",
+    "place": "Place",
+    "clickForWebsite": "click for website",
+    "type": "Type",
+    "in": "In",
+    "out": "Out",
+    "finished": "Finished",
+    "entrants": "Entrants",
+    "sb": "SB",
+    "bb": "BB",
+    "total": "Total",
+    "loading": "Loading...",
+    "noGames": "No games...",
+    "edit": "Edit game",
+    "delete": "Delete game",
+    "add": "Add game"
+  },
+  "GameEditor": {
+    "add": "Add new game",
+    "edit": "Edit existing game",
+    "save": "Save game",
+    "cancel": "Cancel"
+  },
+  "Places": {
+    "places": "Places",
+    "sure": "Are you sure you want to delete this place?",
+    "search": "Search",
+    "name": "Name",
+    "clickForWebsite": "click for website",
+    "country":"Country",
+    "city":"City",
+    "loading":"Loading...",
+    "noPlaces":"No places",
+    "noPlacesFilter":"No places with this filter",
+    "edit": "Edit place",
+    "delete": "Delete place",
+    "add": "Add place"
+  },
+  "PlaceEditor": {
+    "add": "Add new place",
+    "edit": "Edit existing place",
+    "save": "Save place",
+    "cancel": "Cancel"
+  },
+  "Error": {
+    "required": "This field is required",
+    "samePassword": "Not the same password",
+    "minLength8": "Minimum length of 8"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "NavMenu": {
+    "logIn": "Connecter",
+    "register": "Inscrire",
+    "games": "Jeux",
+    "places": "Endroits",
+    "logOut": "Disconnecter"
+  },
+  "Form": {
+    "choose": "choisis un",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer mot de passe",
+    "place": "Endroit",
+    "type": "Type",
+    "inFor": "Dedans pour (€)",
+    "outFor": "Dehors pour (€)",
+    "par1": "Small Blind (CASH) / Fini (TOUR)",
+    "par2": "Big Blind (CASH) / Participants (TOUR)",
+    "date": "Date",
+    "name": "Nom",
+    "city": "Ville",
+    "country":"Pays",
+    "website": "Site web"
+  },
+  "Login": {
+    "logIn": "Connecter",
+    "continue": "Continuer"
+  },
+  "Register": {
+    "register": "Inscrire",
+    "continue": "Continuer"
+  },
+  "Games": {
+    "games": "Jeux",
+    "sure": "Etes-vous sûr de vouloir supprimer ce jeu?",
+    "allGames": "Tous les jeux",
+    "cashgames": "Jeux d'argent",
+    "tournaments": "Tournois",
+    "date": "Date",
+    "place": "Endroit",
+    "clickForWebsite": "cliquez pour le site web",
+    "type": "Type",
+    "in": "Dedans",
+    "out": "Dehors",
+    "finished": "Fini",
+    "entrants": "Participants",
+    "sb": "SB",
+    "bb": "BB",
+    "total": "Totale",
+    "loading": "Chargement en cours...",
+    "noGames": "Pas de jeux...",
+    "edit": "Modifier jeu",
+    "delete": "Supprimer jeu",
+    "add": "Ajouter jeu"
+  },
+  "GameEditor": {
+    "add": "Ajouter nouveau jeu",
+    "edit": "Modifier jeu existant",
+    "save": "Sauvegarder jeu",
+    "cancel": "Annuler"
+  },
+  "Places": {
+    "places": "Endroits",
+    "sure": "Are you sure you want to delete this place?",
+    "search": "Chercher",
+    "name": "Nom",
+    "clickForWebsite": "cliquez pour le site web",
+    "country":"Pays",
+    "city":"Ville",
+    "loading":"Chargement en cours...",
+    "noPlaces":"Pas d'endroits",
+    "noPlacesFilter":"Pas d'endroits avec ce filter",
+    "edit": "Modifier endroit",
+    "delete": "Supprimer endroit",
+    "add": "Ajouter endroit"
+  },
+  "PlaceEditor": {
+    "add": "Ajouter nouveau endroit",
+    "edit": "Modifier jeu endroit",
+    "save": "Sauvegarder jeu",
+    "cancel": "Annuler"
+  },
+  "Error": {
+    "required": "Ce champ est requis",
+    "samePassword": "Pas le même mot de passe",
+    "minLength8": "Longueur minimale de 8"
+  }
+}

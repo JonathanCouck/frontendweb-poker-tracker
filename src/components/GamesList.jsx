@@ -23,7 +23,7 @@ const Game = ({id, place, type, inFor, outFor, par1, par2, date, index}) => {
   });
 
   return (
-    <tr className={`p-2 border-t border-gray-500 ${type==='CASH'?'bg-red-300 hover:bg-red-400':'bg-blue-300 hover:bg-blue-400'}`}>
+    <tr className={`p-2 border-t border-gray-500 ${inFor<outFor?'bg-green-300 hover:bg-green-400':'bg-red-300 hover:bg-red-400'}`}>
       <td className='p-2 border-r border-gray-200'>{index}</td>
       <td className='p-2 border-r border-gray-200'>
         {new Date(date).toLocaleDateString("nl-BE", {
@@ -92,7 +92,7 @@ const GamesList = () => {
               <th className='w-16 p-2'/>
             </tr>
           </thead>
-          <tbody className={`bg-${filter==='CASH'?'red':filter==='TOUR'?'blue':'purple'}-300`}>
+          <tbody className={`bg-blue-300`}>
           { 
           
             loading? <tr><td colSpan="9" className='p-2 font-semibold'>{t('Games.loading')}</td></tr> :
