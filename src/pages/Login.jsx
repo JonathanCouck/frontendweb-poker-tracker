@@ -1,7 +1,7 @@
 import { useHistory, Redirect } from 'react-router';
 import { useLogin, useSession } from '../contexts/AuthProvider';
 
-import LoginForm from '../components2/LoginForm';
+import LoginForm from '../components/LoginForm';
 
 export default function Login() {
   const { isAuthed } = useSession();

@@ -6,7 +6,6 @@ import {
   useEffect, 
   useContext 
 } from 'react';
-import { useTranslation } from 'react-i18next';
 import * as usersApi from '../api/users';
 import * as api from '../api';
 import config from '../config.json';
@@ -33,7 +32,7 @@ function parseExp(exp) {
 const useAuth = () => useContext(AuthContext);
 
 export const useSession = () => {
-  const { token, user, ready, loading, error } = useAuth();
+  const { token, user, ready, loading, error, hasRole } = useAuth();
   return {
     token,
     user,
@@ -41,6 +40,7 @@ export const useSession = () => {
     error,
     loading,
     isAuthed: Boolean(token),
+    hasRole,
   };
 }
 
@@ -62,7 +62,6 @@ export const useRegister = () => {
 export const AuthProvider = ({
   children,
 }) => {
-  const { t } = useTranslation();
   const [ready, setReady] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -90,7 +89,7 @@ export const AuthProvider = ({
     }
     setUser(user);
   }, []);
-
+  
   useEffect(() => {
     setSession(token);
   }, [token, setSession]);
@@ -130,6 +129,11 @@ export const AuthProvider = ({
       setLoading(false);
     }
   }, [setSession])
+  
+  const hasRole = useCallback((role) => {
+    if (!user) return false;
+    return user.roles.includes(role);
+  }, [user]);
 
   const value = useMemo(() => ({
     token,
@@ -140,7 +144,8 @@ export const AuthProvider = ({
     login,
     logout,
     register,
-  }), [token, user, ready, loading, error, login, logout, register]);
+    hasRole,
+  }), [token, user, ready, loading, error, login, logout, register, hasRole]);
 
   return (
     <AuthContext.Provider value={value} >

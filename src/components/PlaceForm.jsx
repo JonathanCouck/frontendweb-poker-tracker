@@ -1,20 +1,19 @@
-import React, { useContext, useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useForm, FormProvider } from "react-hook-form";
-import { Link, useParams, useHistory } from "react-router-dom";
-import { PlacesContext, usePlaces } from "../contexts/PlacesProvider";
-import { useSession } from "../contexts/AuthProvider";
+import { Link, useHistory } from "react-router-dom";
+import { usePlaces } from "../contexts/PlacesProvider";
 
-import LabelInput from "../components/LabelInput";
+import LabelInput from "./LabelInput";
 
 const validationRules = {
-  name: { required: "this is required" },
-  country: { required: "this is required" },
-  city: { required: "this is required" },
-  website: { required: "this is required" },
+  name: { required: "This is required" },
+  country: { required: "This is required" },
+  city: { required: "This is required" },
+  website: { required: "This is required" },
 }
 
 const PlaceForm = () => {
-  const { currentPlace, createOrUpdatePlace, setPlaceToUpdate } = useContext(PlacesContext);
+  const { currentPlace, createOrUpdatePlace, setPlaceToUpdate } = usePlaces();
   const history = useHistory();
   const methods = useForm();
   const {
@@ -23,7 +22,8 @@ const PlaceForm = () => {
   } = methods;
 
   useEffect(() => {
-    if(currentPlace) {
+    if(currentPlace && (Object.keys(currentPlace).length !== 0 || currentPlace.constructor !== Object)) {
+
       setValue('name', currentPlace.name);
       setValue('country', currentPlace.country);
       setValue('city', currentPlace.city);
@@ -72,10 +72,10 @@ const PlaceForm = () => {
           validation={validationRules.website} />
 
         <div className="flex flex-row justify-end p-2">
-          <button className="text-black pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md" type="submit" data-cy="submit_cashgame">
+          <button className="text-black pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md" type="submit" data-cy="submit_place">
             Save Place
           </button>
-          <Link className="text-black pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md" to="/places">
+          <Link className="text-black pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md" to="/places" onClick={()=>setPlaceToUpdate(null)}>
             Cancel
           </Link>
         </div>

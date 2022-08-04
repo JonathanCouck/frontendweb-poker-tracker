@@ -15,33 +15,30 @@ export const getGames = async (id, limit=12, offset=0) => {
 
 export const saveGames = async ({
   id,
-  userId,
-  placeId,
-  smallBlind,
-  bigBlind,
+  place,
+  type,
   inFor,
   outFor,
+  par1,
+  par2,
   date,
 }) => {
   const { data } = await axios ({
     method: id? 'put': 'post',
     url: `games/${id ?? ''}`,
     data: {
-      bigBlind, 
-      smallBlind, 
-      inFor, 
-      outFor, 
-      date, 
-      placeId,
-      userId,
+      place,
+      type,
+      inFor,
+      outFor,
+      par1,
+      par2,
+      date,
     }
   });
-
   return data;
 }
 
-export const deleteGames = async (id) => {
-  if (confirm("Do you want to delete this Game?")) {
-    await axios.delete(`games/${id}`);
-  }
+export const deleteGame = async (id) => {
+  await axios.delete(`games/${id}`);
 }

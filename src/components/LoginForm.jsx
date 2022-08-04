@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useLogin, useSession } from '../contexts/AuthProvider';
 
-import LabelInput from '../components/LabelInput'
+import LabelInput from './LabelInput'
 
 const validationRules = {
   username: {
@@ -27,7 +27,7 @@ const LoginForm = () => {
   const handleLogin = useCallback(async({username,password}) => {
     const success = await login(username, password);
     if(success) {
-      history.push('/');
+      history.push('/games');
     }
   }, [history, login]);
 

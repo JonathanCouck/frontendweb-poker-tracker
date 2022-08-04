@@ -4,7 +4,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { useHistory, Redirect } from 'react-router';
 import { useRegister, useSession } from '../contexts/AuthProvider';
 
-import LabelInput from '../components/LabelInput';
+import LabelInput from './LabelInput';
 
 const RegisterForm = () => {
   const history = useHistory();

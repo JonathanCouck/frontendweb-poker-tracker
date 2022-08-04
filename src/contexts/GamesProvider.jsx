@@ -16,8 +16,8 @@ export const GamesProvider = ({
   children
 }) => {
   const { ready: authReady, user } = useSession();
+  //const [user] = useState({id:'d5a111a3-36ca-44d4-99ac-da70afad3a9b'})
   const [games, setGames] = useState([]);
-  const [page, setPage] = useState(0);
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
   const [initialLoad, setInitialLoad] = useState(false);
@@ -27,29 +27,34 @@ export const GamesProvider = ({
     try {
       setError();
       setLoading(true);
-      const data = await gamesApi.getGames(user.id, 12, page*12);
+      const data = await gamesApi.getGames(user.id);
       setGames(data.data);
     } catch(error) {
       setError(error)
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     if (authReady && !initialLoad) {
       refreshGames();
       setInitialLoad(true);
     }
-  }, [authReady, initialLoad, refreshGames]);
+    
+    if(!authReady) {
+      setInitialLoad(false)
+    }
+  },[user]);
 
   const createOrUpdateGame = useCallback(async ({
     id,
-    placeId,
-    smallBlind,
-    bigBlind,
+    place,
+    type,
     inFor,
     outFor,
+    par1,
+    par2,
     date,
   }) => {
     try {
@@ -57,12 +62,12 @@ export const GamesProvider = ({
       setLoading(true);
       const changedGame = await gamesApi.saveGames({
         id,
-        userId: user.id,
-        placeId,
-        smallBlind,
-        bigBlind,
+        place,
+        type,
         inFor,
         outFor,
+        par1,
+        par2,
         date,
       });
       await refreshGames();
@@ -72,13 +77,13 @@ export const GamesProvider = ({
     } finally {
       setLoading(false);
     }
-  }, [refreshGames, user]);
+  }, [refreshGames]);
 
   const deleteGame = useCallback(async(id) => {
     try {
       setError();
       setLoading(true);
-      await gamesApi.deleteGames(id);
+      await gamesApi.deleteGame(id);
       refreshGames();
     } catch(error) {
       throw error;
@@ -92,13 +97,11 @@ export const GamesProvider = ({
   }, [games])
 
   const value = useMemo(() => ({
-    games: games,
-    page,
+    games,
     error,
     loading,
-    currentGame: currentGame,
+    currentGame,
     initialLoad,
-    setPage,
     createOrUpdateGame,
     deleteGame,
     setGameToUpdate,

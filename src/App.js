@@ -11,9 +11,11 @@ import { AuthProvider } from "./contexts/AuthProvider";
 
 import NavMenu from "./components/NavMenu";
 import PrivateRoute from "./components/PrivateRoute";
+
 import Places from "./pages/Places";
 import PlaceEditor from './pages/PlaceEditor';
 import Games from "./pages/Games";
+import GameEditor from './pages/GameEditor'
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
@@ -25,7 +27,7 @@ function App() {
           <Router>
             <NavMenu />
             <Switch>
-              <Route path="/" exact>
+              <Route path="/login" exact>
                 <Login />
               </Route>
               <Route path="/register" exact>
@@ -35,13 +37,19 @@ function App() {
               <PrivateRoute path="/games" exact>
                 <Games />
               </PrivateRoute>
+              <PrivateRoute path="/games/add" exact>
+                <GameEditor />
+              </PrivateRoute>
+              <PrivateRoute path="/games/edit/:id" exact>
+                <GameEditor />
+              </PrivateRoute>
               <PrivateRoute path="/places" exact>
                 <Places />
               </PrivateRoute>
-              <PrivateRoute path="/places/add" exact>
+              <PrivateRoute role="admin" path="/places/add" exact>
                 <PlaceEditor />
               </PrivateRoute>
-              <PrivateRoute path="/places/edit/:id" exact>
+              <PrivateRoute role="admin" path="/places/edit/:id" exact>
                 <PlaceEditor />
               </PrivateRoute>
             </Switch>

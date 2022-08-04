@@ -1,0 +1,96 @@
+import { useCallback, useMemo } from "react";
+import { useHistory } from 'react-router';
+import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import { BsPlusLg } from "react-icons/bs"
+import { usePlaces } from "../contexts/PlacesProvider";
+
+import React from 'react'
+import { useSession } from "../contexts/AuthProvider";
+
+const Place = ({ index, id, name, country, city, website }) => {
+  const history = useHistory();
+  const { hasRole } = useSession();
+  const { deletePlace, setPlaceToUpdate, currentPlace } = usePlaces();
+
+  const handleRemove = useCallback(() => {
+    if(window.confirm('Are you sure you want to delete this place')) {
+      deletePlace(id);
+    }
+  });
+
+  const handleUpdate = useCallback(async () => {
+    setPlaceToUpdate(id);
+    history.push(`/places/edit/${id}`);
+  });
+
+  return (
+    <tr data-cy="place" className="hover:bg-blue-400 border-t border-gray-500">
+        <td className="p-2 border-r border-gray-200" data-cy="place_index"> {index} </td>
+        <td className="p-2 border-r border-gray-200" data-cy="place_name"> <a href={website} target="_blank">{name}</a> </td>
+        <td className="p-2 border-r border-gray-200" data-cy="place_country"> {country} </td>
+        <td className="p-2 border-r border-gray-200" data-cy="place_city"> {city} </td>
+        { hasRole('admin') &&
+          <td className="flex p-2">
+            <button data-cy="game_edit_btn" onClick={handleUpdate}>
+              <AiFillEdit size={22} color="black" title="edit" />
+            </button>
+            <button data-cy="game_remove_btn" onClick={handleRemove}>
+              <AiFillDelete size={22} color="black" title="delete" />
+            </button>
+          </td>
+        }
+    </tr>
+  )
+}
+
+export default function PlaceList({ search }) {
+  const history = useHistory();
+  const { places, error, loading } = usePlaces();
+  const { hasRole } = useSession();
+
+  const filteredPlaces = useMemo(() => {
+    return places.filter((t) => {
+      return t.name.toLowerCase().includes(search.toLowerCase());
+    });
+  }, [places, search]);
+
+  return (
+    <div className="flex m-5 text-black">
+      <table className='text-left border-2 border-white'>
+        <thead>
+          <tr className='bg-gray-400'>
+            <th className="w-12"><div className="m-2">#</div></th>
+            <th className="w-60"><div className="m-2">Name (click for website)</div></th>
+            <th className="w-40"><div className="m-2">Country</div></th>
+            <th className="w-40"><div className="m-2">City</div></th>
+            {
+              hasRole('admin') && <th/>
+            }
+          </tr>
+        </thead>
+        <tbody className="bg-blue-300">
+          {
+            loading? <tr><td colSpan="4">Loading</td></tr> :
+
+            error? <p data-cy="places_error" className="m-2 error" >{JSON.stringify(error, null, 2)}</p> :
+
+            (!filteredPlaces || !filteredPlaces.length)? <tr><td colSpan="4">No places with filter</td></tr> :
+
+            (!places || !places.length)? <tr><td colSpan="4">No places</td></tr> :
+
+            filteredPlaces.map((p, index) => <Place key={p.id} index={index+1} {...p} />)
+          }
+          
+        </tbody>
+      </table>
+      {hasRole('admin') &&
+        <div className="m-5">
+          <button className="bg-gray-300 hover:bg-gray-400 rounded-md p-2 mt-1" onClick={() => history.push(`/places/add`)}>
+              <BsPlusLg size={25} color="black" title="add place" />
+          </button>
+        </div>
+      }
+    </div>
+    
+  )
+}

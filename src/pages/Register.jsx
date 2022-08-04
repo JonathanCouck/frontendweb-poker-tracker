@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router';
 import { useRegister, useSession } from '../contexts/AuthProvider';
 
-import RegisterForm from '../components2/RegisterForm'
+import RegisterForm from '../components/RegisterForm'
 
 export default function Register() {
   const { isAuthed } = useSession();

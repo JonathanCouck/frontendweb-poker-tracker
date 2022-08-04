@@ -35,7 +35,7 @@ export default function NavMenu() {
       {
         !isAuthed ? (
           <>
-            <NavItem to="/" label="Sign in" />
+            <NavItem to="/login" label="Sign in" />
             <NavItem to="/register" label="Register" />
           </>
         ) : (
