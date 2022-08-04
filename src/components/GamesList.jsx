@@ -3,13 +3,16 @@ import { useHistory } from 'react-router';
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { BsPlusLg } from 'react-icons/bs'
 import { useGames } from "../contexts/GamesProvider";
+import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
 
 const Game = ({id, place, type, inFor, outFor, par1, par2, date, index}) => {
+  const { t } = useTranslation();
   const history = useHistory();
   const { deleteGame, setGameToUpdate, currentGame} = useGames();
 
   const handleRemove = useCallback(() => {
-    if(window.confirm('Are you sure you want to delete this place')) {
+    if(window.confirm(t('Games.sure'))) {
       deleteGame(id);
     }
   });
@@ -37,10 +40,10 @@ const Game = ({id, place, type, inFor, outFor, par1, par2, date, index}) => {
       <td className='p-2 border-r border-gray-200'>{type=='CASH'?`${par1} / ${par2}`:'-'}</td>
       <td className="flex p-2">
         <button data-cy="game_edit_btn" onClick={handleUpdate}>
-          <AiFillEdit size={22} color="black" title="edit" />
+          <AiFillEdit size={22} color="black" title={t('Games.edit')} />
         </button>
         <button data-cy="game_remove_btn" onClick={handleRemove}>
-          <AiFillDelete size={22} color="black" title="delete" />
+          <AiFillDelete size={22} color="black" title={t('Games.delete')} />
         </button>
       </td>
     </tr>
@@ -71,34 +74,34 @@ const GamesList = () => {
     <div className='flex'>
       <div className='text-black m-5'>
         <div className='bg-gray-300 flex w-min rounded-t-lg border-white divide-x-2'>
-            <button className={`w-28 py-1 font-semibold rounded-tl-lg ${filter==='ALL'?'bg-gray-400':''} hover:bg-gray-400`} id='huurder' onClick={() => setFilter('ALL')}>All games</button>
-            <button className={`w-28 py-1 font-semibold ${filter==='CASH'?'bg-gray-400':''} hover:bg-gray-400`} id='verhuurder' onClick={() => setFilter('CASH')}>Cashgames</button>
-            <button className={`w-28 py-1 font-semibold rounded-tr-lg ${filter==='TOUR'?'bg-gray-400':''} hover:bg-gray-400`} id='admin' onClick={() => setFilter('TOUR')}>Tournaments</button>
+            <button className={`w-32 py-1 font-semibold rounded-tl-lg ${filter==='ALL'?'bg-gray-400':''} hover:bg-gray-400`} id='huurder' onClick={() => setFilter('ALL')}>{t('Games.allGames')}</button>
+            <button className={`w-32 py-1 font-semibold ${filter==='CASH'?'bg-gray-400':''} hover:bg-gray-400`} id='verhuurder' onClick={() => setFilter('CASH')}>{t('Games.cashgames')}</button>
+            <button className={`w-32 py-1 font-semibold rounded-tr-lg ${filter==='TOUR'?'bg-gray-400':''} hover:bg-gray-400`} id='admin' onClick={() => setFilter('TOUR')}>{t('Games.tournaments')}</button>
         </div>
         <table className='text-left border-2 border-white'>
           <thead>
             <tr className='bg-gray-400'>
               <th className='w-12 p-2'>#</th>
-              <th className='w-32 p-2'>Date</th>
-              <th className='w-52 p-2'>Place (click for website)</th>
-              <th className='w-16 p-2'>Type</th>
-              <th className='w-20 p-2'>In (€)</th>
-              <th className='w-20 p-2'>Out (€)</th>
-              <th className='w-40 p-2'>Place / Entrants</th>
-              <th className='w-20 p-2'>SB / BB</th>
+              <th className='w-32 p-2'>{t('Games.date')}</th>
+              <th className='w-52 p-2'>{t('Games.place')} ({t('Games.clickForWebsite')})</th>
+              <th className='w-16 p-2'>{t('Games.type')}</th>
+              <th className='w-20 p-2'>{t('Games.in')} (€)</th>
+              <th className='w-20 p-2'>{t('Games.out')} (€)</th>
+              <th className='w-52 p-2'>{t('Games.finished')} / {t('Games.entrants')}</th>
+              <th className='w-20 p-2'>{t('Games.sb')} / {t('Games.bb')}</th>
               <th className='w-16 p-2'/>
             </tr>
           </thead>
           <tbody className={`bg-${filter==='CASH'?'red':filter==='TOUR'?'blue':'purple'}-300`}>
           { 
           
-            loading? <tr><td colSpan="9" className='p-2 font-semibold'>Loading</td></tr> :
-            (!filteredGames || !filteredGames.length)? <tr><td colSpan="9" className='p-2 font-semibold'>No games</td></tr> :
+            loading? <tr><td colSpan="9" className='p-2 font-semibold'>{t('Games.loading')}</td></tr> :
+            (!filteredGames || !filteredGames.length)? <tr><td colSpan="9" className='p-2 font-semibold'>{t('Games.noGames')}</td></tr> :
 
             filteredGames.map((g, index) => <Game key={g.id} index={index+1} {...g}/>)
           }
-          <tr className='bg-gray-300'>
-            <td colSpan={4} className='p-2 font-semibold'>TOTAL:</td>
+          <tr className='bg-gray-300 border-t border-gray-500'>
+            <td colSpan={4} className='p-2 font-semibold'>{t('Games.total')}:</td>
             <td className='p-2'>{filteredGames.reduce((t, g) => t+g.inFor, 0)}</td>
             <td className='p-2'>{filteredGames.reduce((t, g) => t+g.outFor, 0)}</td>
             <td colSpan={3}/>
@@ -108,7 +111,7 @@ const GamesList = () => {
       </div>
       <div className="mx-5 my-12">
         <button className="bg-gray-300 hover:bg-gray-400 rounded-md p-2 mt-1" onClick={() => history.push(`/games/add`)}>
-            <BsPlusLg size={25} color="black" title="add place" />
+            <BsPlusLg size={25} color="black" title={t('Games.add')} />
         </button>
       </div>
     </div>

@@ -7,7 +7,9 @@ const LabelSelect = ({label, options, validation, ...rest}) => {
   return (
     <div className="w-80 flex flex-col col-span-6 sm:col-span-3 pt-2 pb-2">
       <label htmlFor={label} className="font-semibold">
-        {label.replace(/([A-Z0-9])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); })}:
+        {
+          t(`Form.${label}`)
+        }:
       </label>
       <select 
         className="text-black p-1 rounded-md"
@@ -15,7 +17,7 @@ const LabelSelect = ({label, options, validation, ...rest}) => {
         {...rest}
         id={label}
         name={label}>
-        <option value="">--Choose a {label}--</option>
+        <option value="">-- {t('Form.choose')+' '+t(`Form.${label}`)} --</option>
         {options.map((value) => (
           <option key={value.id} value={value.id}>
             {value.name}

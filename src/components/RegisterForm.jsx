@@ -1,12 +1,14 @@
 import React from 'react';
 import { useCallback, useMemo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { useHistory, Redirect } from 'react-router';
 import { useRegister, useSession } from '../contexts/AuthProvider';
 
 import LabelInput from './LabelInput';
 
 const RegisterForm = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const methods = useForm();
   const register = useRegister();
@@ -28,19 +30,19 @@ const RegisterForm = () => {
   }, [history, register]);
 
   const validationRules = useMemo(() => ({
-    username: {
-      required: true
-    },
+    username: { validate: { required: value => value===''? t('Error.required'): null } },
     password: {
-      required: true,
-      minLength: 8
+      validate: {
+        required: value => value===''? t('Error.required'): null,
+        minLength8: value => value.length<8? (t('Error.minLength8')): null
+      }
     },
     confirmPassword: {
-      required: true,
       validate: {
+        required: value => value===''? t('Error.required'): null,
         notIdentical: value => {
           const password = getValues('password');
-          return password === value ? null : 'Same password';
+          return password === value ? null : t('Error.samePassword');
         }
       }
     }
@@ -77,7 +79,7 @@ const RegisterForm = () => {
           
           <div className="flex flex-row justify-end p-2 text-lg">
             <button type="submit" disabled={loading} className="pr-2 pl-2 m-1 font-semibold rounded-md border-2 bg-gray-200 border-gray-400 hover:bg-gray-400">
-              Register
+              {t('Register.continue')}
             </button>
           </div>
         </form>

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { Link, useHistory } from "react-router-dom";
 import { FormProvider, useForm } from 'react-hook-form';
 import { usePlaces } from "../contexts/PlacesProvider";
@@ -6,23 +6,25 @@ import { useGames } from '../contexts/GamesProvider';
 
 import LabelInput from './LabelInput';
 import LabelSelect from './LabelSelect';
-
-const validationRules = {
-  place: { required: "This is required" },
-  type: { required: "This is required" },
-  inFor: { required: "This is required" },
-  outFor: { required: "This is required" },
-  par1: { required: "This is required" },
-  par2: { required: "This is required" },
-  date: { required: "This is required" },
-}
+import { useTranslation } from 'react-i18next';
 
 const GameForm = () => {
+  const { t } = useTranslation();
   const { currentGame, createOrUpdateGame, setGameToUpdate } = useGames();
   const { places } = usePlaces();
   const history = useHistory();
   const methods = useForm();
   const { handleSubmit, setValue } = methods;
+
+  const validationRules = useMemo(() => ({
+    place: { validate: { required: value => value===''? t('Error.required'): null } },
+    type: { validate: { required: value => value===''? t('Error.required'): null } },
+    inFor: { validate: { required: value => value===''? t('Error.required'): null } },
+    outFor: { validate: { required: value => value===''? t('Error.required'): null } },
+    par1: { validate: { required: value => value===''? t('Error.required'): null } },
+    par2: { validate: { required: value => value===''? t('Error.required'): null } },
+    date: { validate: { required: value => value===''? t('Error.required'): null } },
+  }),[]);
 
   useEffect(() => {
     if(currentGame && (Object.keys(currentGame).length !== 0 || currentGame.constructor !== Object)) {
@@ -102,10 +104,10 @@ const GameForm = () => {
 
         <div className="flex flex-row justify-end p-2">
           <button className="text-black pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md" type="submit" data-cy="submit_game">
-            Save Game
+            {t('GameEditor.save')}
           </button>
           <Link className="text-black pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md" to="/games" onClick={()=>setGameToUpdate(null)}>
-            Cancel
+            {t('GameEditor.cancel')}
           </Link>
         </div>
       </form>

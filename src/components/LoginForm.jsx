@@ -1,21 +1,13 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useHistory } from 'react-router';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useLogin, useSession } from '../contexts/AuthProvider';
 
 import LabelInput from './LabelInput'
-
-const validationRules = {
-  username: {
-    required: true
-  },
-  password: {
-    required: true
-  }
-};
-
+import { useTranslation } from 'react-i18next';
 
 const LoginForm = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const { loading, error } = useSession();
   const login = useLogin();
@@ -23,6 +15,11 @@ const LoginForm = () => {
   const {
     handleSubmit,
   } = methods;
+
+  const validationRules = useMemo(() => ({
+    username: { validate: { required: value => value===''? t('Error.required'): null } },
+    password: { validate: { required: value => value===''? t('Error.required'): null } },
+  }),[]);
 
   const handleLogin = useCallback(async({username,password}) => {
     const success = await login(username, password);
@@ -65,7 +62,7 @@ const LoginForm = () => {
             type="submit"
             disabled={loading}
             className="pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md">
-            Sign in
+            {t('Login.continue')}
           </button>
         </div>
       </form>

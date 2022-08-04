@@ -1,0 +1,89 @@
+{
+  "NavMenu": {
+    "logIn": "Inloggen",
+    "register": "Registreren",
+    "games": "Spellen",
+    "places": "Plaatsen",
+    "logOut": "Uitloggen"
+  },
+  "Form": {
+    "choose": "Kies een",
+    "username": "Gebruikersnaam",
+    "password": "Wachtwoord",
+    "confirmPassword": "Bevestig wachtwoord",
+    "place": "Plaats",
+    "type": "Soort",
+    "inFor": "In voor (€)",
+    "outFor": "Uit voor (€)",
+    "par1": "Small Blind (CASH) / Geëindigd (TOUR)",
+    "par2": "Big Blind (CASH) / Deelnemers (TOUR)",
+    "date": "Datum",
+    "name": "Naam",
+    "city": "Stad",
+    "country":"Land",
+    "website": "Website"
+  },
+  "Login": {
+    "logIn": "Inloggen",
+    "continue": "Doorgaan"
+  },
+  "Register": {
+    "register": "Registreren",
+    "continue": "Doorgaan"
+  },
+  "Games": {
+    "games": "Spellen",
+    "sure": "Ben je zeker dat je dit spel wil verwijderen?",
+    "allGames": "Alle spellen",
+    "cashgames": "Contantspellen",
+    "tournaments": "Toernooien",
+    "date": "Datum",
+    "place": "Plaats",
+    "clickForWebsite": "klik voor website",
+    "type": "Soort",
+    "in": "In",
+    "out": "Uit",
+    "finished": "Geëindigd",
+    "entrants": "Deelnemers",
+    "sb": "SB",
+    "bb": "BB",
+    "total": "Totaal",
+    "loading": "Laden...",
+    "noGames": "Geen spellen...",
+    "edit": "Spel aanpassen",
+    "delete": "Spel verwijderen",
+    "add": "Spel toevoegen"
+  },
+  "GameEditor": {
+    "add": "Nieuw spel toevoegen",
+    "edit": "Bestaand spel aanpassen",
+    "save": "Spel opslaan",
+    "cancel": "Annuleren"
+  },
+  "Places": {
+    "places": "Plaatsen",
+    "sure": "Ben je zeker dat je deze plaats wil verwijderen?",
+    "search": "Zoeken",
+    "name": "Naam",
+    "clickForWebsite": "klik voor website",
+    "country":"Land",
+    "city":"Stad",
+    "loading":"Laden...",
+    "noPlaces":"Geen plaatsen",
+    "noPlacesFilter":"Geen plaatsen met deze filter",
+    "edit": "Plaats aanpassen",
+    "delete": "Plaats verwijderen",
+    "add": "Plaats toevoegen"
+  },
+  "PlaceEditor": {
+    "add": "Nieuwe plaats toevoegen",
+    "edit": "Bestaande plaats aanpassen",
+    "save": "Plaats opslaan",
+    "cancel": "Annuleren"
+  },
+  "Error": {
+    "required": "Dit veld is noodzakelijk",
+    "samePassword": "Niet hetzelfde wachtwoord",
+    "minLength8": "Minimum lengte van 8"
+  }
+}

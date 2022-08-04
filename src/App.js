@@ -11,7 +11,6 @@ import { AuthProvider } from "./contexts/AuthProvider";
 
 import NavMenu from "./components/NavMenu";
 import PrivateRoute from "./components/PrivateRoute";
-
 import Places from "./pages/Places";
 import PlaceEditor from './pages/PlaceEditor';
 import Games from "./pages/Games";

@@ -26,8 +26,8 @@ export default function NavMenu() {
       {
         isAuthed ? (
           <>
-            <NavItem to="/games" label="Games" />
-            <NavItem to="/places" label="Places" />
+            <NavItem to="/games" label={t('NavMenu.games')} />
+            <NavItem to="/places" label={t('NavMenu.places')} />
           </>
         ) : null
       }
@@ -35,13 +35,13 @@ export default function NavMenu() {
       {
         !isAuthed ? (
           <>
-            <NavItem to="/login" label="Sign in" />
-            <NavItem to="/register" label="Register" />
+            <NavItem to="/login" label={t('NavMenu.logIn')} />
+            <NavItem to="/register" label={t('NavMenu.register')} />
           </>
         ) : (
           <>
             <button onClick={handleLogout} className="text-xl text-gray-300 p-2 pl-5 pr-5 font-semibold hover:bg-gray-500" >
-              Sign out
+              {t('NavMenu.logOut')}
             </button>
           </>
         )

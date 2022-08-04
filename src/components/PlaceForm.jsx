@@ -1,18 +1,13 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useMemo } from 'react';
 import { useForm, FormProvider } from "react-hook-form";
+import { useTranslation } from 'react-i18next';
 import { Link, useHistory } from "react-router-dom";
 import { usePlaces } from "../contexts/PlacesProvider";
 
 import LabelInput from "./LabelInput";
 
-const validationRules = {
-  name: { required: "This is required" },
-  country: { required: "This is required" },
-  city: { required: "This is required" },
-  website: { required: "This is required" },
-}
-
 const PlaceForm = () => {
+  const { t } = useTranslation();
   const { currentPlace, createOrUpdatePlace, setPlaceToUpdate } = usePlaces();
   const history = useHistory();
   const methods = useForm();
@@ -20,6 +15,13 @@ const PlaceForm = () => {
     handleSubmit,
     setValue,
   } = methods;
+
+  const validationRules = useMemo(() => ({
+    name: { validate: { required: value => value===''? t('Error.required'): null } },
+    country: { validate: { required: value => value===''? t('Error.required'): null } },
+    city: { validate: { required: value => value===''? t('Error.required'): null } },
+    website: { validate: { required: value => value===''? t('Error.required'): null } },
+  }),[]);
 
   useEffect(() => {
     if(currentPlace && (Object.keys(currentPlace).length !== 0 || currentPlace.constructor !== Object)) {
@@ -73,10 +75,10 @@ const PlaceForm = () => {
 
         <div className="flex flex-row justify-end p-2">
           <button className="text-black pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md" type="submit" data-cy="submit_place">
-            Save Place
+            {t('PlaceEditor.save')}
           </button>
           <Link className="text-black pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md" to="/places" onClick={()=>setPlaceToUpdate(null)}>
-            Cancel
+          {t('PlaceEditor.cancel')}
           </Link>
         </div>
       </form>
