@@ -5,10 +5,11 @@ import { useTranslation } from "react-i18next";
 
 const NavItem = ({
   to,
-  label
+  label,
+  transLbl
 }) => 
-    <NavLink to={to} className="text-xl text-gray-300 p-2 pl-5 pr-5 font-semibold hover:bg-gray-500">
-      {label}
+    <NavLink data-cy={`nav_${label}`} to={to} className="text-xl text-gray-300 p-2 pl-5 pr-5 font-semibold hover:bg-gray-500">
+      {transLbl}
     </NavLink>
 ;
 
@@ -40,8 +41,8 @@ export default function NavMenu() {
       {
         isAuthed ? (
           <>
-            <NavItem to="/games" label={t('NavMenu.games')} />
-            <NavItem to="/places" label={t('NavMenu.places')} />
+            <NavItem to="/games" label='games' transLbl={t('NavMenu.games')}/>
+            <NavItem to="/places" label='places' transLbl={t('NavMenu.places')}/>
           </>
         ) : null
       }

@@ -61,24 +61,21 @@ const RegisterForm = () => {
           <LabelInput
             label="username"
             type="text"
-            defaultValue=""
-            placeholder="Username123"
+            data-cy="username_input"
             validation={validationRules.username}/>
           <LabelInput
             label="password"
             type="password"
-            defaultValue=""
-            placeholder="********"
+            data-cy="password_input"
             validation={validationRules.password} />
           <LabelInput
             label="confirmPassword"
             type="password"
-            defaultValue=""
-            placeholder="********"
+            data-cy="confirmPassword_input"
             validation={validationRules.confirmPassword} />
           
           <div className="flex flex-row justify-end p-2 text-lg">
-            <button type="submit" disabled={loading} className="pr-2 pl-2 m-1 font-semibold rounded-md border-2 bg-gray-200 border-gray-400 hover:bg-gray-400">
+            <button type="submit" disabled={loading} className="pr-2 pl-2 m-1 font-semibold rounded-md border-2 bg-gray-200 border-gray-400 hover:bg-gray-400" data-cy="submit_btn">
               {t('Register.continue')}
             </button>
           </div>

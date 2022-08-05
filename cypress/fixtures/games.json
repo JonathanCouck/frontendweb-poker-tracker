@@ -1,0 +1,33 @@
+{
+  "data": [
+    {
+      "id": "be9b38be-053d-472a-a1f1-3dfece649f0c",
+      "user": "d5a111a3-36ca-44d4-99ac-da70afad3a9b",
+      "place": {
+        "id": "46816d9b-a808-469a-939b-493d3f26970e",
+        "name": "PokahNights"
+      },
+      "type": "TOUR",
+      "inFor": 20,
+      "outFor": 122,
+      "par1": 1,
+      "par2": 24,
+      "date": "2022-07-28"
+    },
+    {
+      "id": "be9b38be-053d-472a-a1f1-3dfece649f0c",
+      "user": "d5a111a3-36ca-44d4-99ac-da70afad3a9b",
+      "place": {
+        "id": "46816d9b-a808-469a-939b-493d3f26970e",
+        "name": "PokahNights"
+      },
+      "type": "CASH",
+      "inFor": 250,
+      "outFor": 122,
+      "par1": 1,
+      "par2": 2,
+      "date": "2022-05-12"
+    }
+  ],
+  "count":2
+}

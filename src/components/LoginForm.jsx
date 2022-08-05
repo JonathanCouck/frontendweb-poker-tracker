@@ -43,25 +43,17 @@ const LoginForm = () => {
         <LabelInput
           label="username"
           type="text"
-          defaultValue=""
           data-cy="username_input"
-          placeholder="Username123"
           validation={validationRules.username} />
 
         <LabelInput
           label="password"
           type="password"
-          defaultValue=""
           data-cy="password_input"
-          placeholder="********"
           validation={validationRules.password} />
 
         <div className="flex flex-row justify-end p-2">
-          <button
-            data-cy="submit_btn"
-            type="submit"
-            disabled={loading}
-            className="pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md">
+          <button type="submit" disabled={loading} className="pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md" data-cy="submit_btn">
             {t('Login.continue')}
           </button>
         </div>

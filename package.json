@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^9",
-    "cypress": "^8.6.0",
+    "cypress": "9.7.0",
     "postcss": "^7",
     "tailwindcss": "yarn:@tailwindcss/postcss7-compat"
   }

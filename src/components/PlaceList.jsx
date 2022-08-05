@@ -33,10 +33,10 @@ const Place = ({ index, id, name, country, city, website }) => {
         <td className="p-2 border-r border-gray-200" data-cy="place_city"> {city} </td>
         { hasRole('admin') &&
           <td className="flex p-2">
-            <button data-cy="game_edit_btn" onClick={handleUpdate}>
+            <button data-cy="place_edit_btn" onClick={handleUpdate}>
               <AiFillEdit size={22} color="black" title={t('Places.edit')} />
             </button>
-            <button data-cy="game_remove_btn" onClick={handleRemove}>
+            <button data-cy="place_delete_btn" onClick={handleRemove}>
               <AiFillDelete size={22} color="black" title={t('Places.delete')} />
             </button>
           </td>
@@ -88,7 +88,7 @@ export default function PlaceList({ search }) {
       </table>
       {hasRole('admin') &&
         <div className="m-5">
-          <button className="bg-gray-300 hover:bg-gray-400 rounded-md p-2 mt-1" onClick={() => history.push(`/places/add`)}>
+          <button data-cy="add_place" className="bg-gray-300 hover:bg-gray-400 rounded-md p-2 mt-1" onClick={() => history.push(`/places/add`)}>
               <BsPlusLg size={25} color="black" title={t('Places.add')} />
           </button>
         </div>

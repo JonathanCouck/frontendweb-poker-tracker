@@ -89,12 +89,12 @@ const GameForm = () => {
         <LabelInput
           label="par1"
           type="number"
-          data-cy="inFor_input"
+          data-cy="par1_input"
           validation={validationRules.par1} />
         <LabelInput
           label="par2"
           type="number"
-          data-cy="outFor_input"
+          data-cy="par2_input"
           validation={validationRules.par2} />
         <LabelInput
           label="date"
@@ -103,10 +103,10 @@ const GameForm = () => {
           validation={validationRules.date} />
 
         <div className="flex flex-row justify-end p-2">
-          <button className="text-black pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md" type="submit" data-cy="submit_game">
+          <button className="text-black pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md" type="submit" data-cy="submit_btn">
             {t('GameEditor.save')}
           </button>
-          <Link className="text-black pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md" to="/games" onClick={()=>setGameToUpdate(null)}>
+          <Link className="text-black pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md" to="/games" onClick={()=>setGameToUpdate(null)} data-cy="cancel_btn">
             {t('GameEditor.cancel')}
           </Link>
         </div>

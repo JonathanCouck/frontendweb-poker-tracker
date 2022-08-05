@@ -74,10 +74,10 @@ const PlaceForm = () => {
           validation={validationRules.website} />
 
         <div className="flex flex-row justify-end p-2">
-          <button className="text-black pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md" type="submit" data-cy="submit_place">
+          <button className="text-black pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md" type="submit" data-cy="submit_btn">
             {t('PlaceEditor.save')}
           </button>
-          <Link className="text-black pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md" to="/places" onClick={()=>setPlaceToUpdate(null)}>
+          <Link className="text-black pr-2 pl-2 m-1 border-2 bg-gray-200 border-gray-400 font-semibold disabled:opacity-50 hover:bg-gray-400 rounded-md" to="/places" onClick={()=>setPlaceToUpdate(null)} data-cy="cancel_btn">
           {t('PlaceEditor.cancel')}
           </Link>
         </div>

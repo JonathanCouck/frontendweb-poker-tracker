@@ -23,26 +23,26 @@ const Game = ({id, place, type, inFor, outFor, par1, par2, date, index}) => {
   });
 
   return (
-    <tr className={`p-2 border-t border-gray-500 ${inFor<outFor?'bg-green-300 hover:bg-green-400':'bg-red-300 hover:bg-red-400'}`}>
-      <td className='p-2 border-r border-gray-200'>{index}</td>
-      <td className='p-2 border-r border-gray-200'>
+    <tr data-cy="game" className={`p-2 border-t border-gray-500 ${inFor<outFor?'bg-green-300 hover:bg-green-400':'bg-red-300 hover:bg-red-400'}`}>
+      <td data-cy="game_index" className='p-2 border-r border-gray-200'>{index}</td>
+      <td data-cy="game_date" className='p-2 border-r border-gray-200'>
         {new Date(date).toLocaleDateString("nl-BE", {
           day: "2-digit",
           month: "2-digit",
           year: "numeric",
         })}
       </td>
-      <td className='p-2 border-r border-gray-200'><a href={place.website} target="_blank">{place.name}</a></td>
-      <td className='p-2 border-r border-gray-200'>{type}</td>
-      <td className='p-2 border-r border-gray-200'>{inFor}</td>
-      <td className='p-2 border-r border-gray-200'>{outFor}</td>
-      <td className='p-2 border-r border-gray-200'>{type=='TOUR'?`${par1} / ${par2}`:'-'}</td>
-      <td className='p-2 border-r border-gray-200'>{type=='CASH'?`${par1} / ${par2}`:'-'}</td>
+      <td data-cy="game_place" className='p-2 border-r border-gray-200'><a data-cy="game_website" href={place.website} target="_blank">{place.name}</a></td>
+      <td data-cy="game_type" className='p-2 border-r border-gray-200'>{type}</td>
+      <td data-cy="game_inFor" className='p-2 border-r border-gray-200'>{inFor}</td>
+      <td data-cy="game_outFor" className='p-2 border-r border-gray-200'>{outFor}</td>
+      <td data-cy="game_par1_tour" className='p-2 border-r border-gray-200'>{type=='TOUR'?`${par1} / ${par2}`:'-'}</td>
+      <td data-cy="game_par2_cash" className='p-2 border-r border-gray-200'>{type=='CASH'?`${par1} / ${par2}`:'-'}</td>
       <td className="flex p-2">
         <button data-cy="game_edit_btn" onClick={handleUpdate}>
           <AiFillEdit size={22} color="black" title={t('Games.edit')} />
         </button>
-        <button data-cy="game_remove_btn" onClick={handleRemove}>
+        <button data-cy="game_delete_btn" onClick={handleRemove}>
           <AiFillDelete size={22} color="black" title={t('Games.delete')} />
         </button>
       </td>
@@ -110,7 +110,7 @@ const GamesList = () => {
         </table>
       </div>
       <div className="mx-5 my-12">
-        <button className="bg-gray-300 hover:bg-gray-400 rounded-md p-2 mt-1" onClick={() => history.push(`/games/add`)}>
+        <button data-cy="add_game" className="bg-gray-300 hover:bg-gray-400 rounded-md p-2 mt-1" onClick={() => history.push(`/games/add`)}>
             <BsPlusLg size={25} color="black" title={t('Games.add')} />
         </button>
       </div>

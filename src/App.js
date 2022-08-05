@@ -17,6 +17,7 @@ import PlaceEditor from './pages/PlaceEditor';
 import Games from "./pages/Games";
 import GameEditor from './pages/GameEditor'
 import Login from "./pages/Login";
+import Index from "./pages/Index";
 import Register from "./pages/Register";
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
           <Router>
             <NavMenu />
             <Switch>
+              <Route path="/" exact>
+                <Index />
+              </Route>
               <Route path="/login" exact>
                 <Login />
               </Route>
