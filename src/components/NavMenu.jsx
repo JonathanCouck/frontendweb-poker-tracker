@@ -45,10 +45,10 @@ export default function NavMenu() {
           </>
         ) : null
       }
-      <select className="text-gray-300 bg-gray-600 ml-auto mr-5 w-16 p-2 hover:bg-gray-500" onChange={handleLanguageChange}>
-        <option value="nl" selected={sessionStorage.getItem('lang')==='nl'}>NL</option>
-        <option value="en" selected={sessionStorage.getItem('lang')==='en'}>EN</option>
-        <option value="fr" selected={sessionStorage.getItem('lang')==='fr'}>FR</option>
+      <select className="text-gray-300 bg-gray-600 ml-auto mr-5 w-16 p-2 hover:bg-gray-500" onChange={handleLanguageChange} defaultValue={sessionStorage.getItem('lang')}>
+        <option value="nl">NL</option>
+        <option value="en">EN</option>
+        <option value="fr">FR</option>
       </select>
       {
         !isAuthed ? (

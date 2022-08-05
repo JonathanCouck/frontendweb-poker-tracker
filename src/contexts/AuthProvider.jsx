@@ -131,8 +131,13 @@ export const AuthProvider = ({
   }, [setSession])
   
   const hasRole = useCallback((role) => {
-    if (!user) return false;
-    return user.roles.includes(role);
+    try{
+      if (!user && (Object.keys(user).length !== 0 || user.constructor !== Object)) return false;
+      return user.roles.includes(role);
+    } catch (error) {
+      // Gaf problemen met includes wanneer user nog niet ingeladen was.
+      //Zal wel een betere manier voor zijn, maar dit werkt ook.
+    }
   }, [user]);
 
   const value = useMemo(() => ({
