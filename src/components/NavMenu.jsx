@@ -54,8 +54,8 @@ export default function NavMenu() {
       {
         !isAuthed ? (
           <>
-            <NavItem to="/login" label={t('NavMenu.logIn')} />
-            <NavItem to="/register" label={t('NavMenu.register')} />
+            <NavItem to="/login" label='logIn' transLbl={t('NavMenu.logIn')} />
+            <NavItem to="/register" label='register' transLbl={t('NavMenu.register')} />
           </>
         ) : (
           <>
