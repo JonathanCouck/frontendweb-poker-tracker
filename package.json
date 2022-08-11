@@ -2,8 +2,8 @@
   "name": "frontend-poker",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://localhost:3000/",
-  "dependencies": {
+  "homepage": "https://jonathancouck.github.io/frontendweb-poker-tracker/",
+	"dependencies": {
     "@craco/craco": "^6.4.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
