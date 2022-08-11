@@ -28,6 +28,9 @@ function App() {
           <Router>
             <NavMenu />
             <Switch>
+              <Route path="/frontendweb-poker-tracker" exact>
+                <Index />
+              </Route>
               <Route path="/" exact>
                 <Index />
               </Route>
