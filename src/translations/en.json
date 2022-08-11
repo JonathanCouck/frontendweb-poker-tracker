@@ -85,5 +85,9 @@
     "required": "This field is required",
     "samePassword": "Not the same password",
     "minLength8": "Minimum length of 8"
+  },
+  "Index": {
+    "trackerSite": "Poker Tracker website",
+    "logTrack": "Log in to start tracking your poker results!"
   }
 }

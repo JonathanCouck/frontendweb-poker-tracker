@@ -85,5 +85,9 @@
     "required": "Ce champ est requis",
     "samePassword": "Pas le même mot de passe",
     "minLength8": "Longueur minimale de 8"
+  },
+  "Index": {
+    "trackerSite": "Poker Tracker site Web",
+    "logTrack": "Connectez-vous pour commencer à suivre vos résultats de poker!"
   }
 }

@@ -85,5 +85,9 @@
     "required": "Dit veld is noodzakelijk",
     "samePassword": "Niet hetzelfde wachtwoord",
     "minLength8": "Minimum lengte van 8"
+  },
+  "Index": {
+    "trackerSite": "Poker Tracker website",
+    "logTrack": "Meld u aan om uw poker resultaten bij te houden!"
   }
 }
