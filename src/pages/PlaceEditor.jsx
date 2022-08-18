@@ -9,7 +9,7 @@ const PlaceEditor = () => {
   const { id } = useParams();
   return (
     <div className="m-5">
-      <h1 className="font-semibold text-2xl mb-5">{id?t('PlaceEditor.add'):t('PlaceEditor.edit')}</h1>
+      <h1 className="font-semibold text-2xl mb-5">{id?t('PlaceEditor.edit'):t('PlaceEditor.add')}</h1>
 
       <PlaceForm />
     </div>
